@@ -9,7 +9,7 @@ start:
 	webpack-dev-server --history-api-fallback --host 0.0.0.0 --port 3000 --hot --inline --progress
 
 css:
-	sass -v
+	sass -w public/css/src/main.scss:public/css/main.css -t compressed
 
 run:
 	tmux new -s elysium -d
