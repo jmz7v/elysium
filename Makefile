@@ -21,3 +21,6 @@ run:
 	tmux send-keys 'make css' C-m
 	tmux select-pane -t 1
 	tmux attach-session -t elysium
+
+standard:
+	standard --fix
