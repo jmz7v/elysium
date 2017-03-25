@@ -18,6 +18,8 @@ render((
     <Route component={Landing} path='/' />
     <Route component={Login} path='/login' />
     <Route component={About} path='/about' />
+    <Route component={Terms} path='/terms' />
+    <Route component={Privacy} path='/privacy' />
     <Route component={App} path='/dashboard' />
   </Router>
 ), document.getElementById('app'))

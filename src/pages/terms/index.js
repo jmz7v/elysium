@@ -1,11 +1,23 @@
+// Libraries
 import React, { Component, PropTypes } from 'react'
+import DocumentTitle from 'react-document-title'
 
+// Terms Page
 class Terms extends Component {
+  // Constructor
+  constructor(props) {
+    super(props)
+    this.pageTitle = 'Términos y condiciones'
+    this.data = {
+    }
+    this.state = Object.assign({}, this.data)
+  }
+  // Main render
   render () {
     return (
-      <div>
-        <h1>Terms</h1>
-      </div>
+      <DocumentTitle title={this.pageTitle + ' · ' + process.env.APP_NAME}>
+        <h1>{this.pageTitle}</h1>
+      </DocumentTitle>
     )
   }
 }

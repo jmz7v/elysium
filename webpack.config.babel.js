@@ -2,6 +2,10 @@ import path from 'path'
 import webpack from 'webpack'
 import WebpackNotifierPlugin from 'webpack-notifier'
 
+// App config
+const APP_NAME = 'Elysium'
+
+
 let config = {
   context: path.join(__dirname, 'src'),
   debug: true,
@@ -36,6 +40,14 @@ let config = {
     new WebpackNotifierPlugin()
   ]
 }
+
+config.plugins = [
+  new webpack.DefinePlugin({
+    'process.env': {
+      'APP_NAME': JSON.stringify(APP_NAME)
+    }
+  })
+]
 
 if (process.env.NODE_ENV === 'production') {
   config.devtool = 'source-map'
