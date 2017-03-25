@@ -1,10 +1,8 @@
 # Elysium
-
-React boilerplate
+Provide a solid base to make easy to create new React projects
 
 ## Project Goals
-Provide a solid base to new React projects, no Redux, no PostCSS...
-Just a component renderer based on routes with forms, api connections and a nice UI
+No Redux, no PostCSS... Just a component renderer based on routes with forms, api connections and a nice UI
 
 ## Setup
 Clone the repo, cd into it and execute
