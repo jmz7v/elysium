@@ -1,5 +1,6 @@
 // Libraries
 import React, { Component, PropTypes } from 'react'
+import { Link } from 'react-router'
 import DocumentTitle from 'react-document-title'
 
 // Landing Page
@@ -16,7 +17,15 @@ class Landing extends Component {
   render () {
     return (
       <DocumentTitle title={this.pageTitle + ' · ' + process.env.APP_NAME}>
-        <h1>{this.pageTitle}</h1>
+        <div>
+          <h1>{this.pageTitle}</h1>
+          <Link to='/'>landing</Link><br />
+          <Link to='/login'>login</Link><br />
+          <Link to='/about'>about</Link><br />
+          <Link to='/terms'>terms</Link><br />
+          <Link to='/privacy'>privacy</Link><br />
+          <Link to='/dashboard'>dashboard</Link><br />
+        </div>
       </DocumentTitle>
     )
   }
