@@ -6,6 +6,7 @@ import WebpackNotifierPlugin from 'webpack-notifier'
 const APP_NAME = 'Elysium'
 
 
+// Config
 let config = {
   context: path.join(__dirname, 'src'),
   debug: true,
@@ -13,8 +14,8 @@ let config = {
     './index.js'
   ],
   output: {
-    path: path.join(__dirname, 'build/scripts'),
-    publicPath: 'scripts/',
+    path: path.join(__dirname, 'build/public/js'),
+    publicPath: 'public/js',
     filename: 'app.js'
   },
   devtool: 'eval-source-map',
