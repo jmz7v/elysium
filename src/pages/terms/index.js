@@ -5,7 +5,7 @@ import DocumentTitle from 'react-document-title'
 // Terms Page
 class Terms extends Component {
   // Constructor
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.pageTitle = 'Términos y condiciones'
     this.data = {

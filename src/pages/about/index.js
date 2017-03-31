@@ -5,7 +5,7 @@ import DocumentTitle from 'react-document-title'
 // About Page
 class About extends Component {
   // Constructor
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.pageTitle = 'Acerca de'
     this.data = {

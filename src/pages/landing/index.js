@@ -6,7 +6,7 @@ import DocumentTitle from 'react-document-title'
 // Landing Page
 class Landing extends Component {
   // Constructor
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.pageTitle = 'Bienvenido'
     this.data = {

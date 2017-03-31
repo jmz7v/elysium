@@ -5,7 +5,7 @@ import DocumentTitle from 'react-document-title'
 // Privacy Page
 class Privacy extends Component {
   // Constructor
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.pageTitle = 'Aviso de Privacidad'
     this.data = {

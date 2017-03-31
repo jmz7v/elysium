@@ -5,7 +5,6 @@ import WebpackNotifierPlugin from 'webpack-notifier'
 // App config
 const APP_NAME = 'Elysium'
 
-
 // Config
 let config = {
   context: path.join(__dirname, 'src'),
