@@ -14,13 +14,13 @@ let config = {
     './index.js'
   ],
   output: {
-    path: path.join(__dirname, 'build/public/js'),
-    publicPath: 'public/js',
+    path: path.join(__dirname, 'build/js'),
+    publicPath: 'js',
     filename: 'app.js'
   },
   devtool: 'eval-source-map',
   devServer: {
-    contentBase: 'public',
+    contentBase: path.join(__dirname, 'public'),
     historyApiFallback: true
   },
   module: {
