@@ -10,7 +10,9 @@
 @import 'libs/bulma';
 @import 'libs/odyssey';
 
+$fontStack: 'Work Sans', sans-serif;
+
 body {
-  font-family: 'comic sans'
+  font-family: $fontStack;
 }
 
