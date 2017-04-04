@@ -1,5 +1,6 @@
 // Libraries
 import React, { Component, PropTypes } from 'react'
+import { browserHistory } from 'react-router'
 import DocumentTitle from 'react-document-title'
 import update from 'immutability-helper'
 import classNames from 'classnames'
@@ -22,18 +23,20 @@ class Login extends Component {
       }
     }
     this.state = Object.assign({}, this.data)
-  }
+  } 
 
   _onChangeEmail (e) {
     this.setState({
       form: update(this.state.form, {email: {$set: e.target.value}})
     })
+    if (!this.state.isValid.email) {this._isValidEmail()}
   }
 
   _onChangePassword (e) {
     this.setState({
       form: update(this.state.form, {password: {$set: e.target.value}})
     })
+    if (!this.state.isValid.password) {this._isValidPassword()}
   }
 
   _isValidEmail () {
@@ -70,6 +73,7 @@ class Login extends Component {
               type='text'
               placeholder='Ingresa tu correo electrónico'
               onChange={this._onChangeEmail.bind(this)}
+              onBlur={this._isValidEmail.bind(this)}
               value={this.state.form.email}
             />
           </div>
@@ -83,24 +87,26 @@ class Login extends Component {
               type='password'
               placeholder='Ingresa tu Contraseña'
               onChange={this._onChangePassword.bind(this)}
+              onBlur={this._isValidPassword.bind(this)}
               value={this.state.form.password}
             />
           </div>
-          <p className={classNames('help', 'is-danger', {'is-hidden': this.state.isValid.password})}>Contraseña inválido</p>
+          <p className={classNames('help', 'is-danger', {'is-hidden': this.state.isValid.password})}>Contraseña inválida, mínimo 8 caracteres</p>
         </div>
         <div className='field is-grouped'>
-          <p className='control'>
+          <span className='control'>
             <button
               className='button is-primary'
               type='button'
               onClick={this.handleSubmit.bind(this)}
             >Ingresar</button>
-          </p>
-          <p className='control'>
+          </span>
+          <span className='control'>
             <button
               className='button is-link'
+              onClick={() => { browserHistory.push('/') }}
             >Cancelar</button>
-          </p>
+          </span>
         </div>
       </div>
     )
@@ -109,9 +115,13 @@ class Login extends Component {
   render () {
     return (
       <DocumentTitle title={this.pageTitle + ' · ' + process.env.APP_NAME}>
-        <div>
-          <h1>{this.pageTitle}</h1>
-          {this.renderLogin()}
+        <div className='container'>
+          <div className='columns'>
+            <div className='column is-half is-offset-one-quarter'>
+              <h1 className='title is-3'>{this.pageTitle}</h1>
+              {this.renderLogin()}
+            </div>
+          </div>
         </div>
       </DocumentTitle>
     )
