@@ -243,6 +243,10 @@ $content-max-width: 960px;
   }
 }
 
+.is-hidden {
+  display: none;
+}
+
 .cursor-pointer {
   cursor: pointer;
   &:hover {
