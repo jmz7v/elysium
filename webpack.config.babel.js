@@ -4,6 +4,7 @@ import WebpackNotifierPlugin from 'webpack-notifier'
 
 // App config
 const APP_NAME = 'Elysium'
+const APP_DESCRIPTION = 'React Project Boilerplate'
 
 // Config
 let config = {
@@ -44,7 +45,8 @@ let config = {
 config.plugins = [
   new webpack.DefinePlugin({
     'process.env': {
-      'APP_NAME': JSON.stringify(APP_NAME)
+      'APP_NAME': JSON.stringify(APP_NAME),
+      'APP_DESCRIPTION': JSON.stringify(APP_DESCRIPTION)
     }
   })
 ]

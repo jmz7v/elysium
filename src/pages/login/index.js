@@ -23,7 +23,7 @@ class Login extends Component {
       }
     }
     this.state = Object.assign({}, this.data)
-  } 
+  }
 
   _onChangeEmail (e) {
     this.setState({
