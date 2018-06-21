@@ -1,25 +1,8 @@
-// Libraries
-import React from 'react'
-import { render } from 'react-dom'
-import { Router, Route, browserHistory } from 'react-router'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
 
-// Pages
-import Landing from './pages/landing'
-import Login from './pages/login'
-import About from './pages/about'
-import Terms from './pages/terms'
-import Privacy from './pages/privacy'
-
-// App
-import App from './components/app'
-
-render((
-  <Router history={browserHistory}>
-    <Route component={Landing} path='/' />
-    <Route component={Login} path='/login' />
-    <Route component={About} path='/about' />
-    <Route component={Terms} path='/terms' />
-    <Route component={Privacy} path='/privacy' />
-    <Route component={App} path='/dashboard' />
-  </Router>
-), document.getElementById('app'))
+ReactDOM.render(<App />, document.getElementById('root'));
+registerServiceWorker();
