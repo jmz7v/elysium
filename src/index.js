@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 // Components
-import Landing from 'components/landing'
-import Login from 'components/login'
-import Dashboard from 'components/dashboard'
+import Landing from 'views/landing'
+import Login from 'views/login'
+import Dashboard from 'views/dashboard'
 
 // Other
 import './index.css'
