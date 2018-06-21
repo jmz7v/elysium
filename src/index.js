@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 // Components
-import App from 'components/app';
+import Landing from 'components/landing';
 import Login from 'components/login';
 import Dashboard from 'components/dashboard';
 
@@ -13,7 +13,7 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
 // Private routes
-const AppRoutes = () => (
+const App = () => (
   <Switch>
     <Route path='/dashboard' component={Dashboard} />
   </Switch>
@@ -23,7 +23,7 @@ const AppRoutes = () => (
 const Private = (...routeProps) => (
   <Route
     {...routeProps}
-    render={props => <AppRoutes {...props} />}
+    render={props => <App {...props} />}
   />
 )
 
@@ -33,7 +33,7 @@ const Elysium = () => (
     <React.Fragment>
       <Switch>
         <Route path='/login' component={Login} />
-        <Route exact path='/' component={App} />
+        <Route exact path='/' component={Landing} />
         <Route path='/:route' component={Private} />
       </Switch>
     </React.Fragment>
