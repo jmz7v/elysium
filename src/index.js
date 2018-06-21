@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 // Components
-import App from './components/app';
+import App from 'components/app';
 
 // Other
 import './index.css';

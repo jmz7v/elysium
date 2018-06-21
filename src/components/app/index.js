@@ -2,10 +2,10 @@
 import React, { Component } from 'react';
 
 // Components
-import logo from './../logo/logo.svg';
+import logo from 'components/logo/logo.svg';
 
 // Other
-import './App.css';
+import './index.css';
 
 class App extends Component {
   render() {
