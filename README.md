@@ -1,5 +1,40 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+# Elysium
+
+Provide a base for creating new React apps.
+
+## Current goals
+
+Create some useful components and utilities:
+
+Desired components:
+- Input
+- Select
+- Button
+- Title
+- Form
+- Table
+- List
+- Avatar
+- Card
+
+Desired utilities:
+- Dates
+- Currency
+
+UI:
+- Datepicker
+- Maybe custom UI in the furure using render props
+
+Code:
+- Axios wrapper
+- Auth mock
+
+## Create React App
+
+I'm leaving create-react-app docs in here in the current time.
+
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
