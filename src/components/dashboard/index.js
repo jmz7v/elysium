@@ -1,14 +1,14 @@
 // Libraries
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class Dashboard extends Component {
-  render() {
+  render () {
     return (
-      <div className="Dashboard">
+      <div className='Dashboard'>
         Dashboard screen
       </div>
-    );
+    )
   }
 }
 
-export default Dashboard;
+export default Dashboard

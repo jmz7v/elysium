@@ -1,14 +1,14 @@
 // Libraries
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class Login extends Component {
-  render() {
+  render () {
     return (
-      <div className="login">
+      <div className='login'>
         Login screen
       </div>
-    );
+    )
   }
 }
 
-export default Login;
+export default Login

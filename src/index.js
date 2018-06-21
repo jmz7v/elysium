@@ -1,17 +1,17 @@
 // Libraries
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 // Components
-import Landing from 'components/landing';
-import Login from 'components/login';
-import Dashboard from 'components/dashboard';
+import Landing from 'components/landing'
+import Login from 'components/login'
+import Dashboard from 'components/dashboard'
 
 // Other
-import './index.css';
-import 'bulma/css/bulma.css';
-import registerServiceWorker from './registerServiceWorker';
+import './index.css'
+import 'bulma/css/bulma.css'
+import registerServiceWorker from './registerServiceWorker'
 
 // Private routes
 const App = () => (
@@ -42,4 +42,4 @@ const Elysium = () => (
 )
 
 ReactDOM.render(<Elysium />, document.getElementById('root'))
-registerServiceWorker();
+registerServiceWorker()
