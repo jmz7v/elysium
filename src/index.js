@@ -10,6 +10,7 @@ import Dashboard from 'components/dashboard';
 
 // Other
 import './index.css';
+import 'bulma/css/bulma.css';
 import registerServiceWorker from './registerServiceWorker';
 
 // Private routes
