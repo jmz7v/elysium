@@ -1,8 +1,13 @@
+// Libraries
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
+// Components
+import App from './components/app';
+
+// Other
 import './index.css';
-import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 const Elysium = props => (

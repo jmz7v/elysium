@@ -1,5 +1,10 @@
+// Libraries
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
+// Components
+import logo from './../logo/logo.svg';
+
+// Other
 import './App.css';
 
 class App extends Component {
