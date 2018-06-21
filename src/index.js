@@ -6,15 +6,24 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 // Components
 import App from 'components/app';
 import Login from 'components/login';
+import Dashboard from 'components/dashboard';
 
 // Other
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
-const Private = (...props) => (
+// Private routes
+const AppRoutes = () => (
+  <Switch>
+    <Route path='/dashboard' component={Dashboard} />
+  </Switch>
+)
+
+// Bridge to render all private routes
+const Private = (...routeProps) => (
   <Route
-    {...props}
-    render={p => 'Yo'}
+    {...routeProps}
+    render={props => <AppRoutes {...props} />}
   />
 )
 
