@@ -12,7 +12,7 @@ Desired components:
 - [ ] Input
 - [ ] Select
 - [x] Button
-- [ ] Title
+- [x] Title
 - [ ] Form
 - [ ] Table
 - [ ] List

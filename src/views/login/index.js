@@ -1,12 +1,18 @@
 // Libraries
 import React, { Component } from 'react'
 
+// Components
+import Title from 'components/title'
+
 class Login extends Component {
   render () {
     return (
       <section class='section'>
         <div class='container'>
-          <h1 class='title'>Inicia sesión</h1>
+          <Title
+            title='Inicia sesión'
+            subtitle='O crea una cuenta'
+          />
           <a class='button is-primary' href='/dashboard'>Ingresar</a>
         </div>
       </section>
