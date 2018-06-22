@@ -15,8 +15,7 @@ class Title extends Component {
     this.state = {...this.data}
   }
 
-  renderHead () {
-    const { title } = this.props
+  renderHead ({ title } = this.props) {
     return (
       <Helmet>
         <meta charSet='utf-8' />
@@ -25,21 +24,18 @@ class Title extends Component {
     )
   }
 
-  renderSubtitle () {
-    const { subtitle } = this.props
-    return (subtitle)
-      ? <h2 className='subtitle'>{subtitle}</h2>
-      : null
+  renderSubtitle ({ subtitle } = this.props) {
+    return <h2 className='subtitle'>{subtitle}</h2>
   }
 
   // Main render
   render () {
-    const { title, subtitle } = this.props
+    const { title, documentTitle } = this.props
     return (
       <React.Fragment>
         <h1 className='title'>{title}</h1>
-        {this.renderHead()}
-        {this.renderSubtitle()}
+        {(documentTitle) ? this.renderHead() : null}
+        {(subtitle) ? this.renderSubtitle() : null}
       </React.Fragment>
     )
   }
@@ -48,11 +44,13 @@ class Title extends Component {
 Title.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
+  documentTitle: PropTypes.bool
 }
 
 Title.defaultProps = {
   title: 'Elysium title',
-  subtitle: null
+  subtitle: null,
+  documentTitle: true
 }
 
 export default Title
