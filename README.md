@@ -9,23 +9,24 @@ Provide a base for creating new React apps.
 Create some useful components and utilities:
 
 Desired components:
-- Input
-- Select
-- Button
-- Title
-- Form
-- Table
-- List
-- Avatar
-- Card
+- [ ] Input
+- [ ] Select
+- [ ] Button
+- [ ] Title
+- [ ] Form
+- [ ] Table
+- [ ] List
+- [ ] Avatar
+- [ ] Card
+- [ ] Tabs
 
 Desired utilities:
-- Dates
-- Currency
+- [ ] Dates
+- [ ] Currency
 
 UI:
-- Datepicker
-- Maybe custom UI in the furure using render props
+- [ ] Datepicker
+- [ ] Maybe custom UI in the furure using render props
 
 Code:
 - Axios wrapper
