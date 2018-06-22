@@ -1,25 +1,45 @@
 // Libraries
 import React from 'react'
-import { render } from 'react-dom'
-import { Router, Route, browserHistory } from 'react-router'
+import ReactDOM from 'react-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-// Pages
-import Landing from './pages/landing'
-import Login from './pages/login'
-import About from './pages/about'
-import Terms from './pages/terms'
-import Privacy from './pages/privacy'
+// Components
+import Landing from 'views/landing'
+import Login from 'views/login'
+import Dashboard from 'views/dashboard'
 
-// App
-import App from './components/app'
+// Other
+import './index.css'
+import 'bulma/css/bulma.css'
+import registerServiceWorker from './registerServiceWorker'
 
-render((
-  <Router history={browserHistory}>
-    <Route component={Landing} path='/' />
-    <Route component={Login} path='/login' />
-    <Route component={About} path='/about' />
-    <Route component={Terms} path='/terms' />
-    <Route component={Privacy} path='/privacy' />
-    <Route component={App} path='/dashboard' />
+// Private routes
+const App = () => (
+  <Switch>
+    <Route path='/dashboard' component={Dashboard} />
+  </Switch>
+)
+
+// Bridge to render all private routes
+const Private = (...routeProps) => (
+  <Route
+    {...routeProps}
+    render={props => <App {...props} />}
+  />
+)
+
+// Main router, provides auth an non-auth routes
+const Elysium = () => (
+  <Router>
+    <React.Fragment>
+      <Switch>
+        <Route path='/login' component={Login} />
+        <Route exact path='/' component={Landing} />
+        <Route path='/:route' component={Private} />
+      </Switch>
+    </React.Fragment>
   </Router>
-), document.getElementById('app'))
+)
+
+ReactDOM.render(<Elysium />, document.getElementById('root'))
+registerServiceWorker()
