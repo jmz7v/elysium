@@ -11,14 +11,14 @@ Create some useful components and utilities:
 Desired components:
 - [ ] Input
 - [ ] Select
-- [ ] Button
+- [x] Button
 - [ ] Title
 - [ ] Form
 - [ ] Table
 - [ ] List
 - [ ] Avatar
 - [ ] Card
-- [ ] Tabs
+- [x] Tabs
 
 Desired utilities:
 - [ ] Dates
@@ -29,8 +29,8 @@ UI:
 - [ ] Maybe custom UI in the furure using render props
 
 Code:
-- Axios wrapper
-- Auth mock
+- [ ] Axios wrapper
+- [ ] Auth mock
 
 ## Create React App
 
