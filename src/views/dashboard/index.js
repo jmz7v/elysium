@@ -1,6 +1,9 @@
 // Libraries
 import React, { Component } from 'react'
 
+// Components
+import Tabs from 'components/tabs'
+
 class Dashboard extends Component {
   render () {
     return (
