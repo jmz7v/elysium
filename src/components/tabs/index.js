@@ -1,18 +1,13 @@
 // Libraries
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
-const tabs = [
+const exampleTabs = [
   {
-    label: 'Pictures'
+    label: 'Example tab 1'
   },
   {
-    label: 'Music'
-  },
-  {
-    label: 'Videos'
-  },
-  {
-    label: 'Documents'
+    label: 'Example tab 2'
   }
 ]
 
@@ -20,7 +15,7 @@ class Tabs extends Component {
   constructor (props) {
     super()
     this.data = {
-      active: props.default || tabs[0].label
+      active: props.default
     }
     this.state = {...this.data}
   }
@@ -30,13 +25,14 @@ class Tabs extends Component {
   }
 
   renderItem ({label}) {
-    const active = (this.state.active === label) ? 'is-active' : null
     return (
       <li
         key={label}
-        className={active}
+        className={(this.state.active === label) ? 'is-active' : null}
         onClick={() => { this.setTab(label) }}
-      ><a>{label}</a></li>
+      >
+        <a>{label}</a>
+      </li>
     )
   }
 
@@ -44,11 +40,21 @@ class Tabs extends Component {
     return (
       <div className='tabs'>
         <ul>
-          {tabs.map(tab => this.renderItem(tab))}
+          {this.props.tabs.map(tab => this.renderItem(tab))}
         </ul>
       </div>
     )
   }
+}
+
+Tabs.propTypes = {
+  tabs: PropTypes.array,
+  default: PropTypes.string
+}
+
+Tabs.defaultProps = {
+  tabs: exampleTabs,
+  default: exampleTabs[0].label
 }
 
 export default Tabs
