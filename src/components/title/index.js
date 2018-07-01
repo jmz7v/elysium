@@ -30,7 +30,7 @@ class Title extends Component {
 
   // Main render
   render () {
-    const { title, documentTitle } = this.props
+    const { title, subtitle, documentTitle } = this.props
     return (
       <React.Fragment>
         <h1 className='title'>{title}</h1>
