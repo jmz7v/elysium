@@ -7,6 +7,7 @@ class Input extends React.Component {
   state = {
     value: this.props.defaultValue,
     type: this.props.type,
+    label: this.props.label,
     disabled: this.props.disabled,
     valid: this.props.valid,
     invalid: this.props.invalid
@@ -20,7 +21,13 @@ class Input extends React.Component {
     })
   }
 
-  render () {
+  renderLabel () {
+    const { label } = this.state
+    if (label.length === 0) return null
+    return <label className='label'>{label}</label>
+  }
+
+  renderInput () {
     const { value, type, disabled, valid, invalid } = this.state
     const className = classNames('input', {
       'is-success': valid,
@@ -38,10 +45,20 @@ class Input extends React.Component {
       />
     )
   }
+
+  render () {
+    return (
+      <div className='field'>
+        {this.renderLabel()}
+        <div className='control'>{this.renderInput()}</div>
+      </div>
+    )
+  }
 }
 
 Input.propTypes = {
   defaultValue: PropTypes.string,
+  label: PropTypes.string,
   valueChanged: PropTypes.func,
   type: PropTypes.string,
   disabled: PropTypes.bool,
@@ -51,6 +68,7 @@ Input.propTypes = {
 
 Input.defaultProps = {
   defaultValue: '',
+  label: '',
   valueChanged: value => { console.log(`valueChanged to ${value}`) },
   type: 'text',
   disabled: false,
