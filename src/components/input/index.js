@@ -8,6 +8,7 @@ class Input extends React.Component {
     value: this.props.defaultValue,
     type: this.props.type,
     label: this.props.label,
+    help: this.props.help,
     disabled: this.props.disabled,
     valid: this.props.valid,
     invalid: this.props.invalid
@@ -25,6 +26,12 @@ class Input extends React.Component {
     const { label } = this.state
     if (label.length === 0) return null
     return <label className='label'>{label}</label>
+  }
+
+  renderHelp () {
+    const { help } = this.state
+    if (help.length === 0) return null
+    return <p className='help'>{help}</p>
   }
 
   renderInput () {
@@ -51,6 +58,7 @@ class Input extends React.Component {
       <div className='field'>
         {this.renderLabel()}
         <div className='control'>{this.renderInput()}</div>
+        {this.renderHelp()}
       </div>
     )
   }
@@ -59,6 +67,7 @@ class Input extends React.Component {
 Input.propTypes = {
   defaultValue: PropTypes.string,
   label: PropTypes.string,
+  help: PropTypes.string,
   valueChanged: PropTypes.func,
   type: PropTypes.string,
   disabled: PropTypes.bool,
@@ -69,6 +78,7 @@ Input.propTypes = {
 Input.defaultProps = {
   defaultValue: '',
   label: '',
+  help: '',
   valueChanged: value => { console.log(`valueChanged to ${value}`) },
   type: 'text',
   disabled: false,
