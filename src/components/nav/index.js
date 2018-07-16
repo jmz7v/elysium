@@ -1,6 +1,5 @@
 // Libraries
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 
 class Nav extends Component {
   constructor (props) {

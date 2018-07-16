@@ -1,3 +1,4 @@
+
 // Libraries
 import React, { Component } from 'react'
 
@@ -6,6 +7,7 @@ import Nav from 'components/nav'
 import Title from 'components/title'
 import Tabs from 'components/tabs'
 import Button from 'components/button'
+import Input from 'components/input'
 
 class Dashboard extends Component {
   render () {
@@ -17,6 +19,7 @@ class Dashboard extends Component {
         />
         <Tabs />
         <Button />
+        <Input />
       </React.Fragment>
     )
   }

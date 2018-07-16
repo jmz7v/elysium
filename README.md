@@ -9,7 +9,7 @@ Provide a base for creating new React apps.
 Create some useful components and utilities:
 
 Desired components:
-- [ ] Input
+- [x] Input
 - [ ] Select
 - [x] Button
 - [x] Title

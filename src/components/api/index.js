@@ -1,6 +1,3 @@
-// Libraries
-import axios from 'axios'
-
 const config = {
   baseURL: 'https://example.com/api',
   headers: {
@@ -10,11 +7,17 @@ const config = {
 
 class User {
   // Handle login
-  static Login (data) {}
+  static Login (data) {
+    console.log({config})
+  }
   // Handle logout
-  static Logout (data) {}
+  static Logout (data) {
+    console.log({config})
+  }
   // Dashboard
-  static Dashboard (params = {}) {}
+  static Dashboard (params = {}) {
+    console.log({config})
+  }
 }
 
 export default {

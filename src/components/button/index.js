@@ -50,7 +50,7 @@ Button.defaultProps = {
   loading: false,
   text: 'button',
   className: '',
-  kind: 'is-primary',
+  kind: 'is-primary'
 }
 
 export default Button

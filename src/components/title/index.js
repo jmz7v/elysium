@@ -13,7 +13,7 @@ class Title extends Component {
     super()
     this.data = {}
     this.state = {...this.data}
-  }
+  }
 
   renderHead ({ title } = this.props) {
     return (
