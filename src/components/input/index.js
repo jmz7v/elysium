@@ -13,7 +13,11 @@ class Input extends React.Component {
   }
 
   setValue = e => {
-    this.setState({value: e.currentTarget.value})
+    this.setState({
+      value: e.currentTarget.value
+    }, () => {
+      this.props.valueChanged(this.state.value)
+    })
   }
 
   render () {
@@ -38,6 +42,7 @@ class Input extends React.Component {
 
 Input.propTypes = {
   defaultValue: PropTypes.string,
+  valueChanged: PropTypes.func,
   type: PropTypes.string,
   disabled: PropTypes.bool,
   valid: PropTypes.bool,
@@ -46,6 +51,7 @@ Input.propTypes = {
 
 Input.defaultProps = {
   defaultValue: '',
+  valueChanged: value => { console.log(`valueChanged to ${value}`) },
   type: 'text',
   disabled: false,
   valid: false,
