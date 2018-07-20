@@ -32,9 +32,7 @@ class Form extends Component {
 
   handlePrimary = () => {
     const { action } = this.props.primary
-    console.log(this.props.fields.map(field => field.name))
-    // this.export()
-    action()
+    action(this.export())
   }
 
   handleSecondary = () => {
@@ -43,9 +41,7 @@ class Form extends Component {
   }
 
   export = () => {
-    const data = this.props.fields.map(field => field.export())
-    console.log('Ready to export data...')
-    console.log({data})
+    return this.state.fields.map(({name, value}) => ({[name]: value}))
   }
 
   renderPrimary ({ text, action }) {

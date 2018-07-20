@@ -21,7 +21,9 @@ const form = {
   ],
   primary: {
     text: 'Ingresar',
-    action: () => { console.log('Ingresar') }
+    action: data => {
+      console.log(data)
+    }
   },
   secondary: {
     text: 'Olvidé mi contraseña',
