@@ -9,12 +9,12 @@ const form = {
   title: 'Ingresa',
   fields: [
     {
-      name: 'input',
+      name: 'email',
       label: 'email',
       kind: 'text',
     },
     {
-      name: 'input',
+      name: 'password',
       label: 'password',
       kind: 'password',
     }
