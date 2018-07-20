@@ -14,11 +14,15 @@ class Input extends React.Component {
     invalid: this.props.invalid
   }
 
+  export = () => {
+    return this.state.value
+  }
+
   setValue = e => {
     this.setState({
       value: e.currentTarget.value
     }, () => {
-      this.props.valueChanged(this.state.value)
+      this.props.valueChanged(this.props.name, this.state.value)
     })
   }
 
