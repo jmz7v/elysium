@@ -10,19 +10,19 @@ Create some useful components and utilities:
 
 Desired components:
 - [x] Input
-- [ ] Select
 - [x] Button
 - [x] Title
-- [ ] Form
-- [ ] Table
-- [ ] List
-- [ ] Avatar
-- [ ] Card
 - [x] Tabs
+- [ ] Select – July 2018
+- [ ] Table – July 2018
+- [ ] Avatar – July 2018
+- [ ] List – August 2018
+- [ ] Card – August 2018
+- [ ] Form – September 2018
 
 Desired utilities:
-- [ ] Dates
-- [ ] Currency
+- [ ] Dates – August 2018
+- [ ] Currency – August 2018
 
 UI:
 - [ ] Datepicker
