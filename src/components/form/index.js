@@ -22,6 +22,23 @@ const renderSecondary = ({ text, action }) => (
   />
 )
 
+const renderField = ({ name, label, kind }) => (
+  <Input
+    key={name}
+    name={name}
+    label={label}
+    kind={kind}
+  />
+)
+
+const renderFields = (fields) => {
+  return (
+    <React.Fragment>
+      {fields.map(field => renderField(field))}
+    </React.Fragment>
+  )
+}
+
 class Form extends Component {
   constructor (props) {
     super()
@@ -31,9 +48,10 @@ class Form extends Component {
 
 
   render () {
-    const { primary, secondary } = this.props
+    const { fields, primary, secondary } = this.props
     return (
       <React.Fragment>
+        {fields && renderFields(fields)}
         {primary && renderPrimary(primary)}
         {secondary && renderSecondary(secondary)}
       </React.Fragment>
