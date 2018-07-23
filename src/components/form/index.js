@@ -31,20 +31,20 @@ class Form extends Component {
   }
 
   handlePrimary = () => {
-    const { action } = this.props.primary
-    action(this.export())
+    const { handlePrimary } = this.props
+    handlePrimary(this.export())
   }
 
   handleSecondary = () => {
-    const { action } = this.props.secondary
-    action()
+    const { handleSecondary } = this.props
+    handleSecondary()
   }
 
   export = () => {
     return this.state.fields.map(({name, value}) => ({[name]: value}))
   }
 
-  renderPrimary ({ text, action }) {
+  renderPrimary (text) {
     return (
       <Button
         text={text}
@@ -54,11 +54,11 @@ class Form extends Component {
     )
   }
 
-  renderSecondary ({ text, action }) {
+  renderSecondary (text) {
     return (
       <Button
         text={text}
-        onClick={action}
+        onClick={this.handleSecondary}
         kind='is-light'
       />
     )
@@ -103,9 +103,13 @@ class Form extends Component {
 }
 
 Form.propTypes = {
+  handlePrimary: PropTypes.func.isRequired,
+  handleSecondary: PropTypes.func.isRequired,
 }
 
 Form.defaultProps = {
+  handlePrimary: data => { console.log({data}) },
+  handleSecondary: data => { console.log({data}) },
 }
 
 export default Form

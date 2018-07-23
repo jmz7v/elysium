@@ -1,5 +1,6 @@
 // Libraries
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 
 // Components
 import Title from 'components/title'
@@ -19,20 +20,45 @@ const form = {
       kind: 'password',
     }
   ],
-  primary: {
-    text: 'Ingresar',
-    action: data => {
-      console.log(data)
-    }
-  },
-  secondary: {
-    text: 'Olvidé mi contraseña',
-    action: () => { console.log('Recuperar') }
-  }
+  primary: 'Ingresar',
+  secondary: 'Olvidé mi contraseña',
 }
 
 class Login extends Component {
+  constructor() {
+    super();
+    this.data = {
+      loading: false,
+      loggedIn: false,
+      forgotPassword: false,
+    }
+    this.state = {...this.data}
+  }
+
+  redirectToDashboard () {
+    return this.state.loggedIn
+      ? <Redirect to='/dashboard' />
+      : null
+  }
+
+  redirectToRecover () {
+    return this.state.forgotPassword
+      ? <Redirect to='/recover' />
+      : null
+  }
+
+  handlePrimary = data => {
+    console.log(data)
+    // TODO: Call to api
+    this.setState({loggedIn: true})
+  }
+
+  handleSecondary = () => {
+    this.setState({forgotPassword: true})
+  }
+
   render () {
+    const { loading } = this.state
     return (
       <section className='section'>
         <div className='container'>
@@ -41,11 +67,13 @@ class Login extends Component {
             subtitle='O crea una cuenta'
           />
           <Form
-            title={form.title}
-            primary={form.primary}
-            fields={form.fields}
-            secondary={form.secondary}
+            loading={loading}
+            handlePrimary={this.handlePrimary}
+            handleSecondary={this.handleSecondary}
+            {...form}
           />
+          {this.redirectToDashboard()}
+          {this.redirectToRecover()}
         </div>
       </section>
     )
