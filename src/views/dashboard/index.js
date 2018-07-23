@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 // Components
 import Nav from 'components/nav'
 import Title from 'components/title'
-import Tabs from 'components/tabs'
+import Tabs, { TabList, Tab } from 'components/tabs'
 import Button from 'components/button'
 import Input from 'components/input'
 
@@ -17,7 +17,13 @@ class Dashboard extends Component {
         <Title
           title='Dashboard'
         />
-        <Tabs />
+        <Tabs>
+          <TabList>
+            <Tab>Holi</Tab>
+            <Tab>Holi 2</Tab>
+            <Tab>Holi 3</Tab>
+          </TabList>
+        </Tabs>
         <Button />
         <Input />
       </React.Fragment>

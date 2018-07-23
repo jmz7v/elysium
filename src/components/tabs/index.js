@@ -1,60 +1,63 @@
 // Libraries
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
-const exampleTabs = [
-  {
-    label: 'Example tab 1'
-  },
-  {
-    label: 'Example tab 2'
-  }
-]
+// Single tab
+export const Tab = ({ onClick, active, children }) => (
+  <li
+    className={classNames({'is-active': active})}
+    onClick={onClick}
+  >
+    <a>{children}</a>
+  </li>
+)
+
+// Group of tabs
+export const TabList = ({children, active, onClick}) =>
+  React.Children.map(children, (child, index) =>
+    React.cloneElement(child, {
+      active: index === active,
+      onClick: () => onClick(index)
+  })
+)
 
 class Tabs extends Component {
   constructor (props) {
-    super()
-    this.data = {
-      active: props.default
+    super(props)
+    this.state = {
+      active: this.props.active
     }
-    this.state = {...this.data}
-  }
+  }
 
-  setTab (active) {
-    this.setState({active})
-  }
-
-  renderItem ({label}) {
-    return (
-      <li
-        key={label}
-        className={(this.state.active === label) ? 'is-active' : null}
-        onClick={() => { this.setTab(label) }}
-      >
-        <a>{label}</a>
-      </li>
-    )
+  children (children = this.props.children) {
+    return React.Children.map(children, (child, i) => {
+      if (child.type === TabList) {
+        return React.cloneElement(child, {
+          active: this.state.active,
+          onClick: active => this.setState({active})
+        })
+      } else {
+        return child
+      }
+    })
   }
 
   render () {
     return (
       <div className='tabs'>
         <ul>
-          {this.props.tabs.map(tab => this.renderItem(tab))}
+          {this.children()}
         </ul>
       </div>
     )
   }
 }
 
-Tabs.propTypes = {
-  tabs: PropTypes.array,
-  default: PropTypes.string
-}
+Tabs.propTypes = {}
 
 Tabs.defaultProps = {
-  tabs: exampleTabs,
-  default: exampleTabs[0].label
+  active: 0
 }
 
 export default Tabs
