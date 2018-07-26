@@ -64,24 +64,28 @@ class Tabs extends Component {
       active: this.state.active
     })
 
-    return panels
+    return (
+      <div className='panels'>
+        {panels}
+      </div>
+    )
   }
 
   children (children = this.props.children) {
     return React.Children.map(children, (child, i) => {
-      if (child.type === TabList) {
-        return this.renderTabList(child)
-      } else if (child.type === TabPanels) {
-        return this.renderPanels(child)
-      } else {
-        return child
+      switch (child.type) {
+        case TabList:
+          return this.renderTabList(child)
+        case TabPanels:
+          return this.renderPanels(child)
+        default:
+          return child
       }
     })
   }
 
   render () {
     return (
-
       <div className='container'>
         {this.children()}
       </div>
