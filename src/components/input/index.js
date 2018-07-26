@@ -5,6 +5,8 @@ import classNames from 'classnames'
 
 import validator from 'components/validator'
 
+const numericKeys = ['isInteger', 'isNumber']
+
 class Input extends React.Component {
   state = {
     value: this.props.defaultValue,
@@ -25,7 +27,10 @@ class Input extends React.Component {
   }
 
   export = () => {
-    return ({[this.props.name]: this.state.value})
+    const formattedValue = Object.keys(this.props).some(numericKey => numericKeys.includes(numericKey))
+      ? Number(this.state.value)
+      : this.state.value
+    return ({[this.props.name]: formattedValue})
   }
 
   setValue = e => {
