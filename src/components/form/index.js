@@ -2,7 +2,6 @@
 import React, { Component } from 'react'
 import update from 'immutability-helper';
 import PropTypes from 'prop-types'
-import validator from 'validator'
 
 // Components
 import Input from 'components/input'
@@ -25,7 +24,13 @@ class Form extends Component {
       fields: this.getDefaultFields()
     }
     this.state = {...this.data}
+    this.fieldRefs = {}
+    this.getFieldNames().map(field => { this.fieldRefs[field] = React.createRef() })
   }
+
+  getFieldNames = () => {
+    return this.props.fields.map(field => field.name)
+  }
 
   getDefaultFields = () => {
     return this.props.fields.map(field => ({...defaultField, ...field}))
@@ -42,32 +47,33 @@ class Form extends Component {
   }
 
   validate = () => {
-    return this.state.fields.map(field => {
-      if (typeof field.validate === 'undefined') return true
+    return this.getFieldNames().map(field => {
+      this.fieldRefs[field].current.validate()
+    })
+    // return this.state.fields.map(field => {
+    //   if (typeof field.validate === 'undefined') return true
 
-      const fieldIsValid = field.validate.map(validation => {
-        // console.log(validation, !validator.isEmpty(validation))
-        switch (validation) {
-          case 'required':
-            return !validator.isEmpty(field.value)
-          default:
-            return true
-        }
-      }).every(t => t)
+    //   const fieldIsValid = field.validate.map(validation => {
+    //     switch (validation) {
+    //       case 'required':
+    //         return !validator.isEmpty(field.value)
+    //       default:
+    //         return true
+    //     }
+    //   }).every(t => t)
 
-      const fieldIndex = this.state.fields.findIndex(f => f.name === field.name)
-      const fields = update(this.state.fields, {[fieldIndex]: {invalid: {$set: fieldIsValid}}})
-      console.log({fields})
-      this.setState({fields})
+    //   const fieldIndex = this.state.fields.findIndex(f => f.name === field.name)
+    //   const fields = update(this.state.fields, {[fieldIndex]: {invalid: {$set: !fieldIsValid}}})
+    //   this.setState({fields})
+    //   console.log({fields})
 
-      return fieldIsValid
-    }).every(t => t)
+    //   return fieldIsValid
+    // }).every(t => t)
   }
 
   export = () => {
-    this.validate()
-    console.log(this.validate())
-    return this.state.fields.map(({name, value}) => ({[name]: value}))
+    return this.getFieldNames().map(field => this.fieldRefs[field].current.export())
+    // return this.state.fields.map(({name, value}) => ({[name]: value}))
   }
 
   renderPrimary (text) {
@@ -98,6 +104,7 @@ class Form extends Component {
         label={label}
         kind={kind}
         valueChanged={this.valueChanged}
+        ref={this.fieldRefs[name]}
       />
     )
   }

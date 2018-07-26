@@ -2,6 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import validator from 'validator'
 
 class Input extends React.Component {
   state = {
@@ -14,8 +15,12 @@ class Input extends React.Component {
     invalid: this.props.invalid
   }
 
+  validate = () => {
+    console.log('HOLIIII')
+  }
+
   export = () => {
-    return this.state.value
+    return ({[this.props.name]: this.state.value})
   }
 
   setValue = e => {
@@ -45,8 +50,6 @@ class Input extends React.Component {
       'is-success': valid,
       'is-danger': invalid
     })
-
-  console.log({invalid})
 
     return (
       <input
