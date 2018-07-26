@@ -50,30 +50,10 @@ class Form extends Component {
     return this.getFieldNames().map(field => {
       this.fieldRefs[field].current.validate()
     })
-    // return this.state.fields.map(field => {
-    //   if (typeof field.validate === 'undefined') return true
-
-    //   const fieldIsValid = field.validate.map(validation => {
-    //     switch (validation) {
-    //       case 'required':
-    //         return !validator.isEmpty(field.value)
-    //       default:
-    //         return true
-    //     }
-    //   }).every(t => t)
-
-    //   const fieldIndex = this.state.fields.findIndex(f => f.name === field.name)
-    //   const fields = update(this.state.fields, {[fieldIndex]: {invalid: {$set: !fieldIsValid}}})
-    //   this.setState({fields})
-    //   console.log({fields})
-
-    //   return fieldIsValid
-    // }).every(t => t)
   }
 
   export = () => {
-    return this.getFieldNames().map(field => this.fieldRefs[field].current.export())
-    // return this.state.fields.map(({name, value}) => ({[name]: value}))
+    return this.getFieldNames().map(field => this.fieldRefs[field].current.validateAndExport())
   }
 
   renderPrimary (text) {
@@ -96,23 +76,22 @@ class Form extends Component {
     )
   }
 
-  renderField ({ name, label, kind }) {
-    return (
-      <Input
-        key={name}
-        name={name}
-        label={label}
-        kind={kind}
-        valueChanged={this.valueChanged}
-        ref={this.fieldRefs[name]}
-      />
-    )
-  }
-
   valueChanged = (name, value) => {
     const fieldIndex = this.state.fields.findIndex(field => field.name === name)
     const fields = update(this.state.fields, {[fieldIndex]: {value: {$set: value}}})
     this.setState({fields})
+  }
+
+  renderField ({ name, ...props}) {
+    return (
+      <Input
+        key={name}
+        name={name}
+        valueChanged={this.valueChanged}
+        ref={this.fieldRefs[name]}
+        {...props}
+      />
+    )
   }
 
   renderFields (fields) {

@@ -12,13 +12,27 @@ const form = {
     {
       name: 'email',
       label: 'email',
-      kind: 'text',
-      validate: ['required']
+      type: 'text',
+      required: true,
+      isEmail: true
     },
     {
       name: 'password',
       label: 'password',
-      kind: 'password',
+      type: 'password',
+      required: true,
+    },
+    {
+      name: 'integer',
+      label: 'integer',
+      type: 'text',
+      isInteger: true,
+    },
+    {
+      name: 'number',
+      label: 'number',
+      type: 'text',
+      isNumber: true,
     }
   ],
   primary: 'Ingresar',

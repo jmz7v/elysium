@@ -2,21 +2,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import validator from 'validator'
+
+import validator from 'components/validator'
 
 class Input extends React.Component {
   state = {
     value: this.props.defaultValue,
     type: this.props.type,
-    label: this.props.label,
     help: this.props.help,
     disabled: this.props.disabled,
     valid: this.props.valid,
-    invalid: this.props.invalid
+    invalid: this.props.invalid,
+    invalidMessage: ''
   }
 
   validate = () => {
-    console.log('HOLIIII')
+    validator(this)
+  }
+
+  validateAndExport = () => {
+    return this.validate() ? this.export() : null
   }
 
   export = () => {
@@ -32,20 +37,19 @@ class Input extends React.Component {
   }
 
   renderLabel () {
-    const { label } = this.state
+    const { label } = this.props
     if (label.length === 0) return null
     return <label className='label'>{label}</label>
   }
 
-  renderHelp () {
-    const { help } = this.state
-    if (help.length === 0) return null
-    return <p className='help'>{help}</p>
+  renderError () {
+    const { invalidMessage } = this.state
+    if (invalidMessage.length === 0) return null
+    return <p className='help is-danger'>{invalidMessage}</p>
   }
 
   renderInput () {
-    const { value, type, disabled } = this.state
-    const { valid, invalid } = this.props
+    const { valid, invalid, value, type, disabled } = this.state
     const className = classNames('input', {
       'is-success': valid,
       'is-danger': invalid
@@ -68,7 +72,7 @@ class Input extends React.Component {
       <div className='field'>
         {this.renderLabel()}
         <div className='control'>{this.renderInput()}</div>
-        {this.renderHelp()}
+        {this.renderError()}
       </div>
     )
   }
