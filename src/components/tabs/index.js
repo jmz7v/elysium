@@ -3,30 +3,33 @@ import React, { Component } from 'react'
 import classNames from 'classnames'
 
 // Single tab
-export const Tab = ({ onClick, active, children }) => (
+export const Tab = ({ onClick, active, children, ...props }) => (
   <li
     className={classNames({'is-active': active})}
-    onClick={onClick}
+    onClick={!props.disabled ? onClick : null}
   >
     <a>{children}</a>
   </li>
 )
 
 // Group of tabs
-export const TabList = ({children, active, onClick}) =>
+export const TabList = ({children, active, onClick, ...props}) =>
   React.Children.map(children, (child, index) =>
     React.cloneElement(child, {
       active: index === active,
+      disabled: props.disabled,
       onClick: () => onClick(index)
     })
   )
 
+// Single panel
 export const Panel = ({ active, children }) => (
   <div className='panel'>
     {children}
   </div>
 )
 
+// Panel wrapper, only shows the one with same index as Tabs.state.active
 export const TabPanels = ({children, active}) =>
   React.Children.map(children, (child, index) =>
     (index === active)

@@ -18,7 +18,9 @@ class Dashboard extends Component {
           title='Dashboard'
         />
         <Tabs>
-          <TabList>
+          <TabList
+            disabled={false}
+          >
             <Tab>Holi</Tab>
             <Tab>Holi 2</Tab>
             <Tab>Holi 3</Tab>
