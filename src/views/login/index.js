@@ -37,6 +37,18 @@ const form = {
       type: 'text',
       defaultValue: '1.0',
       isNumber: true
+    },
+    {
+      name: 'options',
+      label: 'options',
+      type: 'options',
+      // defaultValue: '1',
+      required: true,
+      options: [
+        {value: '1', label: 'Hola'},
+        {value: '2', label: 'como'},
+        {value: '3', label: 'estás?'},
+      ]
     }
   ],
   primary: 'Ingresar',
