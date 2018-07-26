@@ -61,7 +61,6 @@ export const SetStep = ({children, onSetStep, step}) => {
   )
 }
 
-
 class Tabs extends Component {
   constructor (props) {
     super(props)

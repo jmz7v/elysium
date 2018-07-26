@@ -1,6 +1,5 @@
 // Libraries
 import React, { Component } from 'react'
-import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
 class Tabs extends Component {
@@ -8,7 +7,7 @@ class Tabs extends Component {
     super(props)
     this.state = {
       value: this.props.defaultValue,
-      invalidMessage: '',
+      invalidMessage: ''
     }
   }
 

@@ -47,7 +47,7 @@ const form = {
       options: [
         {value: '1', label: 'Hola'},
         {value: '2', label: 'como'},
-        {value: '3', label: 'estás?'},
+        {value: '3', label: 'estás?'}
       ]
     }
   ],

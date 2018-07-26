@@ -26,7 +26,7 @@ class Form extends Component {
     }
     this.state = {...this.data}
     this.fieldRefs = {}
-    this.getFieldNames().map(field => this.fieldRefs[field] = React.createRef())
+    this.getFieldNames().map(field => { this.fieldRefs[field] = React.createRef() })
   }
 
   getFieldNames = () => {
@@ -132,13 +132,13 @@ class Form extends Component {
 Form.propTypes = {
   handlePrimary: PropTypes.func.isRequired,
   handleSecondary: PropTypes.func.isRequired,
-  loading: PropTypes.bool,
+  loading: PropTypes.bool
 }
 
 Form.defaultProps = {
   handlePrimary: data => { console.log({data}) },
   handleSecondary: data => { console.log({data}) },
-  loading: false,
+  loading: false
 }
 
 export default Form
