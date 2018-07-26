@@ -26,7 +26,7 @@ class Form extends Component {
     }
     this.state = {...this.data}
     this.fieldRefs = {}
-    this.getFieldNames().map(field => { this.fieldRefs[field] = React.createRef() })
+    this.getFieldNames().map(field => this.fieldRefs[field] = React.createRef())
   }
 
   getFieldNames = () => {
