@@ -42,7 +42,8 @@ const form = {
       name: 'options',
       label: 'options',
       type: 'options',
-      defaultValue: '1',
+      // defaultValue: '1',
+      required: true,
       options: [
         {value: '1', label: 'Hola'},
         {value: '2', label: 'como'},

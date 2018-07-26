@@ -1,15 +1,42 @@
 // Libraries
 import React, { Component } from 'react'
 import classNames from 'classnames'
+import PropTypes from 'prop-types'
 
 class Tabs extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      active: this.props.active,
       value: this.props.defaultValue,
       invalidMessage: '',
     }
+  }
+
+  validate () {
+    if (this.props.required) {
+      const isValid = !!this.state.value
+      this.setState({
+        invalidMessage: isValid ? '' : 'Campo requerido'
+      })
+      return isValid
+    }
+    return true
+  }
+
+  export () {
+    return {[this.props.name]: this.state.value}
+  }
+
+  validateAndExport () {
+    return this.validate()
+      ? this.export()
+      : null
+  }
+
+  setValue = value => {
+    this.setState({
+      value: this.state.value === value ? this.props.defaultValue : value
+    })
   }
 
   renderLabel () {
@@ -20,7 +47,7 @@ class Tabs extends Component {
 
   renderOption ({value, label}) {
     return (
-      <div className='option' key={value} onClick={() => { this.setState({value}) }}>
+      <div className='option' key={value} onClick={() => { this.setValue(value) }}>
 
         {label}
         {this.state.value === value ? 'active' : null}
@@ -49,10 +76,17 @@ class Tabs extends Component {
   }
 }
 
-Tabs.propTypes = {}
+Tabs.propTypes = {
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    null
+  ]),
+  label: PropTypes.string
+}
 
 Tabs.defaultProps = {
-  active: 0
+  defaultValue: null,
+  label: ''
 }
 
 export default Tabs
