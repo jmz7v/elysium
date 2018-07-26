@@ -21,6 +21,19 @@ export const TabList = ({children, active, onClick}) =>
     })
   )
 
+export const Panel = ({ active, children }) => (
+  <div>
+    {children}
+  </div>
+)
+
+export const TabPanels = ({children, active}) =>
+  React.Children.map(children, (child, index) =>
+    React.cloneElement(child, {
+      active: index === active
+    })
+  )
+
 class Tabs extends Component {
   constructor (props) {
     super(props)
@@ -29,12 +42,28 @@ class Tabs extends Component {
     }
   }
 
+  renderTabList (child) {
+    const tabList = React.cloneElement(child, {
+      active: this.state.active,
+      onClick: active => this.setState({active})
+    })
+
+    return (
+      <div className='tabs'>
+        <ul>
+          {tabList}
+        </ul>
+      </div>
+    )
+  }
+
   children (children = this.props.children) {
     return React.Children.map(children, (child, i) => {
       if (child.type === TabList) {
+        return this.renderTabList(child)
+      } else if (child.type === TabPanels) {
         return React.cloneElement(child, {
-          active: this.state.active,
-          onClick: active => this.setState({active})
+          active: this.state.active
         })
       } else {
         return child
@@ -44,10 +73,9 @@ class Tabs extends Component {
 
   render () {
     return (
-      <div className='tabs'>
-        <ul>
-          {this.children()}
-        </ul>
+
+      <div className='container'>
+        {this.children()}
       </div>
     )
   }

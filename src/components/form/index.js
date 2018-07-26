@@ -123,12 +123,14 @@ class Form extends Component {
 
 Form.propTypes = {
   handlePrimary: PropTypes.func.isRequired,
-  handleSecondary: PropTypes.func.isRequired
+  handleSecondary: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
 }
 
 Form.defaultProps = {
   handlePrimary: data => { console.log({data}) },
-  handleSecondary: data => { console.log({data}) }
+  handleSecondary: data => { console.log({data}) },
+  loading: false,
 }
 
 export default Form

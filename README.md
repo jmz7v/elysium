@@ -13,12 +13,12 @@ Desired components:
 - [x] Button
 - [x] Title
 - [x] Tabs
+- [x] Form
 - [ ] Select – July 2018
 - [ ] Table – July 2018
 - [ ] Avatar – July 2018
 - [ ] List – August 2018
 - [ ] Card – August 2018
-- [ ] Form – September 2018
 
 Desired utilities:
 - [ ] Dates – August 2018
