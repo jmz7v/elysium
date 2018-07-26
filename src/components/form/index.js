@@ -53,6 +53,7 @@ class Form extends Component {
   export = () => {
     return this.getFieldNames()
       .map(field => this.fieldRefs[field].current.export())
+      .reduce((acc, i) => ({...acc, ...i}), {})
   }
 
   validateAndExport = () => {
