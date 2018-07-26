@@ -13,6 +13,7 @@ const form = {
       name: 'email',
       label: 'email',
       type: 'text',
+      defaultValue: 'test@domain.com',
       required: true,
       isEmail: true
     },
@@ -20,18 +21,21 @@ const form = {
       name: 'password',
       label: 'password',
       type: 'password',
+      defaultValue: 'password',
       required: true,
     },
     {
       name: 'integer',
       label: 'integer',
       type: 'text',
+      defaultValue: '1',
       isInteger: true,
     },
     {
       name: 'number',
       label: 'number',
       type: 'text',
+      defaultValue: '1.0',
       isNumber: true,
     }
   ],
