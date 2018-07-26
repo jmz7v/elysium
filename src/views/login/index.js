@@ -13,6 +13,7 @@ const form = {
       name: 'email',
       label: 'email',
       kind: 'text',
+      validate: ['required']
     },
     {
       name: 'password',
@@ -50,7 +51,7 @@ class Login extends Component {
   handlePrimary = data => {
     console.log(data)
     // TODO: Call to api
-    this.setState({loggedIn: true})
+    // this.setState({loggedIn: true})
   }
 
   handleSecondary = () => {

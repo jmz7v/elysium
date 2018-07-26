@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import update from 'immutability-helper';
 import PropTypes from 'prop-types'
+import validator from 'validator'
 
 // Components
 import Input from 'components/input'
@@ -40,7 +41,32 @@ class Form extends Component {
     handleSecondary()
   }
 
+  validate = () => {
+    return this.state.fields.map(field => {
+      if (typeof field.validate === 'undefined') return true
+
+      const fieldIsValid = field.validate.map(validation => {
+        // console.log(validation, !validator.isEmpty(validation))
+        switch (validation) {
+          case 'required':
+            return !validator.isEmpty(field.value)
+          default:
+            return true
+        }
+      }).every(t => t)
+
+      const fieldIndex = this.state.fields.findIndex(f => f.name === field.name)
+      const fields = update(this.state.fields, {[fieldIndex]: {invalid: {$set: fieldIsValid}}})
+      console.log({fields})
+      this.setState({fields})
+
+      return fieldIsValid
+    }).every(t => t)
+  }
+
   export = () => {
+    this.validate()
+    console.log(this.validate())
     return this.state.fields.map(({name, value}) => ({[name]: value}))
   }
 
@@ -91,7 +117,8 @@ class Form extends Component {
   }
 
   render () {
-    const { fields, primary, secondary } = this.props
+    const { primary, secondary } = this.props
+    const { fields } = this.state
     return (
       <React.Fragment>
         {fields && this.renderFields(fields)}

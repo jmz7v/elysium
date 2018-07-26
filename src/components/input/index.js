@@ -39,11 +39,14 @@ class Input extends React.Component {
   }
 
   renderInput () {
-    const { value, type, disabled, valid, invalid } = this.state
+    const { value, type, disabled } = this.state
+    const { valid, invalid } = this.props
     const className = classNames('input', {
       'is-success': valid,
       'is-danger': invalid
     })
+
+  console.log({invalid})
 
     return (
       <input
