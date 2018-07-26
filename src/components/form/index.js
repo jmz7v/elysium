@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 // Components
 import Input from 'components/input'
 import Button from 'components/button'
+import Options from 'components/options'
 
 const defaultField = {
   value: '',
@@ -89,15 +90,22 @@ class Form extends Component {
   }
 
   renderField ({name, ...props}) {
-    return (
-      <Input
-        key={name}
-        name={name}
-        valueChanged={this.valueChanged}
-        ref={this.fieldRefs[name]}
-        {...props}
-      />
-    )
+    const sharedProps = {
+      key: name,
+      name: name,
+      valueChanged: this.valueChanged,
+      ref: this.fieldRefs[name],
+      ...props
+    }
+    switch (props.type) {
+      case 'text':
+      case 'password':
+        return <Input {...sharedProps} />
+      case 'options':
+        return <Options {...sharedProps} />
+      default:
+        return <Options {...sharedProps} />
+    }
   }
 
   renderFields (fields) {
