@@ -1,6 +1,5 @@
 // Libraries
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 // Single tab
@@ -19,8 +18,8 @@ export const TabList = ({children, active, onClick}) =>
     React.cloneElement(child, {
       active: index === active,
       onClick: () => onClick(index)
-  })
-)
+    })
+  )
 
 class Tabs extends Component {
   constructor (props) {
@@ -28,7 +27,7 @@ class Tabs extends Component {
     this.state = {
       active: this.props.active
     }
-  }
+  }
 
   children (children = this.props.children) {
     return React.Children.map(children, (child, i) => {

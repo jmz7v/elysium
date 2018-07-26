@@ -21,15 +21,14 @@ const validations = {
     const isValid = validator.isFloat(str)
     const message = isValid ? '' : 'Campo debe ser un número'
     return ({ isValid, message })
-  },
+  }
 }
 
 const validate = field => {
-
   const { value } = field.state
   const fieldProps = Object.keys(field.props)
   const availableValidations = Object.keys(validations)
-  const validationsToRun = fieldProps.filter(validation => -1 !== availableValidations.indexOf(validation))
+  const validationsToRun = fieldProps.filter(validation => availableValidations.indexOf(validation) !== -1)
 
   return validationsToRun.every(validation => {
     const { isValid, message } = validations[validation](value)

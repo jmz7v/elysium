@@ -1,6 +1,6 @@
 // Libraries
 import React, { Component } from 'react'
-import update from 'immutability-helper';
+import update from 'immutability-helper'
 import PropTypes from 'prop-types'
 
 // Components
@@ -26,7 +26,7 @@ class Form extends Component {
     this.state = {...this.data}
     this.fieldRefs = {}
     this.getFieldNames().map(field => { this.fieldRefs[field] = React.createRef() })
-  }
+  }
 
   getFieldNames = () => {
     return this.props.fields.map(field => field.name)
@@ -88,7 +88,7 @@ class Form extends Component {
     this.setState({fields})
   }
 
-  renderField ({ name, ...props}) {
+  renderField ({name, ...props}) {
     return (
       <Input
         key={name}
@@ -123,12 +123,12 @@ class Form extends Component {
 
 Form.propTypes = {
   handlePrimary: PropTypes.func.isRequired,
-  handleSecondary: PropTypes.func.isRequired,
+  handleSecondary: PropTypes.func.isRequired
 }
 
 Form.defaultProps = {
   handlePrimary: data => { console.log({data}) },
-  handleSecondary: data => { console.log({data}) },
+  handleSecondary: data => { console.log({data}) }
 }
 
 export default Form

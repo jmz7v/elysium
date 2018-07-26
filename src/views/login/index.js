@@ -22,34 +22,34 @@ const form = {
       label: 'password',
       type: 'password',
       defaultValue: 'password',
-      required: true,
+      required: true
     },
     {
       name: 'integer',
       label: 'integer',
       type: 'text',
       defaultValue: '1',
-      isInteger: true,
+      isInteger: true
     },
     {
       name: 'number',
       label: 'number',
       type: 'text',
       defaultValue: '1.0',
-      isNumber: true,
+      isNumber: true
     }
   ],
   primary: 'Ingresar',
-  secondary: 'Olvidé mi contraseña',
+  secondary: 'Olvidé mi contraseña'
 }
 
 class Login extends Component {
-  constructor() {
-    super();
+  constructor () {
+    super()
     this.data = {
       loading: false,
       loggedIn: false,
-      forgotPassword: false,
+      forgotPassword: false
     }
     this.state = {...this.data}
   }
