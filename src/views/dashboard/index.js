@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 // Components
 import Nav from 'components/nav'
 import Title from 'components/title'
-import Tabs, { TabList, Tab, TabPanels, Panel } from 'components/tabs'
+import Tabs, { TabList, Tab, TabPanels, Panel, SetStep } from 'components/tabs'
 import Button from 'components/button'
 import Input from 'components/input'
 
@@ -26,9 +26,22 @@ class Dashboard extends Component {
             <Tab>Holi 3</Tab>
           </TabList>
           <TabPanels>
-            <Panel>Panel</Panel>
-            <Panel>Panel 2</Panel>
-            <Panel>Panel 3</Panel>
+            <Panel>
+              Panel
+              <br />
+              <SetStep step={1}>Siguiente</SetStep>
+            </Panel>
+            <Panel>
+              Panel 2
+              <br />
+              <SetStep step={0}>Anterior</SetStep>
+              <SetStep step={2}>Siguiente</SetStep>
+            </Panel>
+            <Panel>
+              Panel 3
+              <br />
+              <SetStep step={1}>Anterior</SetStep>
+            </Panel>
           </TabPanels>
         </Tabs>
         <Button />

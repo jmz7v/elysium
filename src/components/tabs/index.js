@@ -23,21 +23,44 @@ export const TabList = ({children, active, onClick, ...props}) =>
   )
 
 // Single panel
-export const Panel = ({ active, children }) => (
+export const Panel = ({ active, children, onSetStep }) => (
   <div className='panel'>
-    {children}
+    {
+      React.Children.map(children, (child, i) => {
+        switch (child.type) {
+          case SetStep:
+            // return this.renderTabList(child)
+            return React.cloneElement(child, {
+              onSetStep
+            })
+          default:
+            return child
+        }
+      })
+    }
   </div>
 )
 
 // Panel wrapper, only shows the one with same index as Tabs.state.active
-export const TabPanels = ({children, active}) =>
+export const TabPanels = ({children, active, onSetStep}) =>
   React.Children.map(children, (child, index) =>
     (index === active)
       ? React.cloneElement(child, {
+        onSetStep: onSetStep,
         active: index === active
       })
       : null
   )
+
+// Render a button that will change step to step
+export const SetStep = ({children, onSetStep, step}) => {
+  return (
+    <button onClick={() => { onSetStep(step) }}>
+      {children}
+    </button>
+  )
+}
+
 
 class Tabs extends Component {
   constructor (props) {
@@ -64,7 +87,8 @@ class Tabs extends Component {
 
   renderPanels (child) {
     const panels = React.cloneElement(child, {
-      active: this.state.active
+      active: this.state.active,
+      onSetStep: active => this.setState({active})
     })
 
     return (
