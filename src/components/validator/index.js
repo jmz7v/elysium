@@ -31,7 +31,7 @@ const validate = field => {
   const availableValidations = Object.keys(validations)
   const validationsToRun = fieldProps.filter(validation => -1 !== availableValidations.indexOf(validation))
 
-  validationsToRun.every(validation => {
+  return validationsToRun.every(validation => {
     const { isValid, message } = validations[validation](value)
 
     field.setState({
@@ -42,7 +42,6 @@ const validate = field => {
     // Abort on first error
     return isValid
   })
-
 }
 
 export default validate

@@ -17,7 +17,7 @@ class Input extends React.Component {
   }
 
   validate = () => {
-    validator(this)
+    return validator(this)
   }
 
   validateAndExport = () => {

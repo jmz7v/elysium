@@ -37,23 +37,28 @@ class Form extends Component {
   }
 
   handlePrimary = () => {
-    const { handlePrimary } = this.props
-    handlePrimary(this.export())
+    this.props.handlePrimary(this.validateAndExport())
   }
 
   handleSecondary = () => {
-    const { handleSecondary } = this.props
-    handleSecondary()
+    this.props.handleSecondary()
   }
 
   validate = () => {
-    return this.getFieldNames().map(field => {
-      this.fieldRefs[field].current.validate()
-    })
+    return this.getFieldNames()
+      .map(field => this.fieldRefs[field].current.validate())
+      .every(field => field)
   }
 
   export = () => {
-    return this.getFieldNames().map(field => this.fieldRefs[field].current.validateAndExport())
+    return this.getFieldNames()
+      .map(field => this.fieldRefs[field].current.export())
+  }
+
+  validateAndExport = () => {
+    return this.validate()
+      ? this.export()
+      : null
   }
 
   renderPrimary (text) {
