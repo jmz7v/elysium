@@ -9,7 +9,7 @@ import Login from 'views/login'
 import Dashboard from 'views/dashboard'
 
 // Other
-import './index.css'
+import './styles/index.css'
 import 'bulma/css/bulma.css'
 import registerServiceWorker from './registerServiceWorker'
 
