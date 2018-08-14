@@ -1,6 +1,5 @@
 // Libraries
 import React from 'react'
-import ReactTestUtils from 'react-dom/test-utils'
 import { render, fireEvent, cleanup } from 'react-testing-library'
 
 // Components

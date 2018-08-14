@@ -1,5 +1,5 @@
 // Libraries
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
@@ -9,11 +9,11 @@ import Helmet from 'react-helmet'
 const APP_NAME = 'Elysium React Boilerplate'
 
 export const DocumentTitle = ({ title, show }) => show ? (
-    <Helmet>
-      <meta charSet='utf-8' />
-      <title data-testid='documentTitle'>{`${title} – ${APP_NAME}`}</title>
-    </Helmet>
-  ) : null
+  <Helmet>
+    <meta charSet='utf-8' />
+    <title data-testid='documentTitle'>{`${title} – ${APP_NAME}`}</title>
+  </Helmet>
+) : null
 
 DocumentTitle.propTypes = {
   title: PropTypes.string.isRequired,
@@ -28,7 +28,6 @@ DocumentTitle.defaultProps = {
 export const Subtitle = ({ subtitle }) => subtitle
   ? <h2 className='subtitle'>{subtitle}</h2>
   : null
-
 
 Subtitle.propTypes = {
   subtitle: PropTypes.string
