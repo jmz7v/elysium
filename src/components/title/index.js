@@ -11,13 +11,32 @@ const APP_NAME = 'Elysium React Boilerplate'
 export const DocumentTitle = ({ title, show }) => show ? (
     <Helmet>
       <meta charSet='utf-8' />
-      <title>{`${title} – ${APP_NAME}`}</title>
+      <title data-testid='documentTitle'>{`${title} – ${APP_NAME}`}</title>
     </Helmet>
   ) : null
+
+DocumentTitle.propTypes = {
+  title: PropTypes.string.isRequired,
+  documentTitle: PropTypes.bool
+}
+
+DocumentTitle.defaultProps = {
+  title: 'Elysium title',
+  show: true
+}
 
 export const Subtitle = ({ subtitle }) => subtitle
   ? <h2 className='subtitle'>{subtitle}</h2>
   : null
+
+
+Subtitle.propTypes = {
+  subtitle: PropTypes.string
+}
+
+Subtitle.defaultProps = {
+  subtitle: ''
+}
 
 const Title = ({ title, subtitle, documentTitle }) => (
   <React.Fragment>

@@ -7,7 +7,7 @@ import { render, fireEvent, cleanup } from 'react-testing-library'
 
 // Components
 // import Button, { config } from './index'
-import Title from './index'
+import Title, { Subtitle, DocumentTitle }  from './index'
 import Helmet from 'react-helmet'
 
 // Other
@@ -17,7 +17,7 @@ const props = {
   title: 'hello',
 }
 
-describe('Title', () => {
+describe('<Title/>', () => {
   test('Renders the title from props', () => {
     const { getByText } = render(<Title {...props} />)
     const { textContent, className } = getByText(props.title)
@@ -37,28 +37,21 @@ describe('Title', () => {
     expect(className.split(' ')).toContain('subtitle')
   })
 
-  // test('Renders the helmet if documentTitle is true', () => {
-  //   const renderer = new ShallowRenderer();
-  //   renderer.render(<Title documentTitle />);
-  //   const result = renderer.getRenderOutput();
-  //   const { children } = result.props
-  //   // expect(children.some(child => ReactTestUtils.isElementOfType(child, Helmet))).toBeTruthy()
-  //   children.forEach(child => {
-  //     console.log(child)
-  //   })
-  //   expect(children.some(child => ReactTestUtils.isElementOfType(child, Helmet))).toBeTruthy()
-  // })
+  test('Renders <Subtitle/> component', () => {
+    const subtitle = 'there'
+    const { getByText } = render(<Subtitle subtitle={subtitle} />)
+    const { textContent, className } = getByText(subtitle)
 
+    // Assert
+    expect(textContent).toEqual(subtitle)
+    expect(className.split(' ')).toContain('subtitle')
+  })
+ 
+  test('Return null from <DocumentTitle/>', () => {
+    const { queryByTestId } = render(<DocumentTitle {...props} show={false} />)
 
+    // Assert
+    expect(queryByTestId('documentTitle')).toBeNull()
+  })
 
-
-  
-  // test('Renders the helmet if documentTitle is true', () => {
-    // const renderer = new ShallowRenderer();
-    // renderer.render(<Title />);
-    // const result = renderer.getRenderOutput();
-    // const { children } = result.props
-    // console.log(children)
-    // expect(children.some(child => ReactTestUtils.isElementOfType(child, Helmet))).toBeFalsy()
-  // })
 })
