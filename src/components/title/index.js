@@ -8,38 +8,24 @@ import Helmet from 'react-helmet'
 // Other
 const APP_NAME = 'Elysium React Boilerplate'
 
-class Title extends Component {
-  constructor (props) {
-    super()
-    this.data = {}
-    this.state = {...this.data}
-  }
+export const DocumentTitle = ({ title, show }) => show ? (
+    <Helmet>
+      <meta charSet='utf-8' />
+      <title>{`${title} – ${APP_NAME}`}</title>
+    </Helmet>
+  ) : null
 
-  renderHead ({ title } = this.props) {
-    return (
-      <Helmet>
-        <meta charSet='utf-8' />
-        <title>{`${title} – ${APP_NAME}`}</title>
-      </Helmet>
-    )
-  }
+export const Subtitle = ({ subtitle }) => subtitle
+  ? <h2 className='subtitle'>{subtitle}</h2>
+  : null
 
-  renderSubtitle ({ subtitle } = this.props) {
-    return <h2 className='subtitle'>{subtitle}</h2>
-  }
-
-  // Main render
-  render () {
-    const { title, subtitle, documentTitle } = this.props
-    return (
-      <React.Fragment>
-        <h1 className='title'>{title}</h1>
-        {(documentTitle) ? this.renderHead() : null}
-        {(subtitle) ? this.renderSubtitle() : null}
-      </React.Fragment>
-    )
-  }
-}
+const Title = ({ title, subtitle, documentTitle }) => (
+  <React.Fragment>
+    <h1 className='title'>{title}</h1>
+    <Subtitle subtitle={subtitle} />
+    <DocumentTitle title={title} show={documentTitle} />
+  </React.Fragment>
+)
 
 Title.propTypes = {
   title: PropTypes.string.isRequired,
@@ -49,7 +35,7 @@ Title.propTypes = {
 
 Title.defaultProps = {
   title: 'Elysium title',
-  subtitle: null,
+  subtitle: '',
   documentTitle: true
 }
 
