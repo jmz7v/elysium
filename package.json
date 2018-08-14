@@ -26,6 +26,7 @@
     "lint-js": "node_modules/.bin/standard --fix",
     "lint-css": "node_modules/.bin/stylelint --fix \"**/*.scss\"",
     "test": "react-scripts test --env=jsdom",
+    "coverage": "yarn test --coverage",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
