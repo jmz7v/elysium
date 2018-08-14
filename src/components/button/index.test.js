@@ -2,14 +2,11 @@
 import React from 'react'
 import ReactTestUtils from 'react-dom/test-utils'
 import { render, fireEvent, cleanup } from 'react-testing-library'
-// import { configure, mount } from 'enzyme'
-// import Adapter from 'enzyme-adapter-react-16'
 
 // Components
 import Button, { config } from './index'
 
 // Other
-// configure({ adapter: new Adapter() })
 afterEach(cleanup)
 
 const props = {
@@ -60,5 +57,4 @@ describe('Button', () => {
     // Assert
     expect(className.split(' ')).toContain(config.disabled)
   })
-
 })
