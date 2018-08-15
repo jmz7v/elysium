@@ -3,10 +3,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
-// Components
-
 // Other
 const APP_NAME = 'Elysium React Boilerplate'
+
+export const config = {
+  main: 'title',
+  subtitle: 'subtitle'
+}
 
 export const DocumentTitle = ({ title, show }) => show ? (
   <Helmet>
@@ -26,7 +29,7 @@ DocumentTitle.defaultProps = {
 }
 
 export const Subtitle = ({ subtitle }) => subtitle
-  ? <h2 className='subtitle'>{subtitle}</h2>
+  ? <h2 className={config.subtitle}>{subtitle}</h2>
   : null
 
 Subtitle.propTypes = {
@@ -39,7 +42,7 @@ Subtitle.defaultProps = {
 
 const Title = ({ title, subtitle, documentTitle }) => (
   <React.Fragment>
-    <h1 className='title'>{title}</h1>
+    <h1 className={config.main}>{title}</h1>
     <Subtitle subtitle={subtitle} />
     <DocumentTitle title={title} show={documentTitle} />
   </React.Fragment>
