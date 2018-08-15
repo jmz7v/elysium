@@ -1,45 +1,52 @@
 // Libraries
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-
-// Components
 
 // Other
 const APP_NAME = 'Elysium React Boilerplate'
 
-class Title extends Component {
-  constructor (props) {
-    super()
-    this.data = {}
-    this.state = {...this.data}
-  }
-
-  renderHead ({ title } = this.props) {
-    return (
-      <Helmet>
-        <meta charSet='utf-8' />
-        <title>{`${title} – ${APP_NAME}`}</title>
-      </Helmet>
-    )
-  }
-
-  renderSubtitle ({ subtitle } = this.props) {
-    return <h2 className='subtitle'>{subtitle}</h2>
-  }
-
-  // Main render
-  render () {
-    const { title, subtitle, documentTitle } = this.props
-    return (
-      <React.Fragment>
-        <h1 className='title'>{title}</h1>
-        {(documentTitle) ? this.renderHead() : null}
-        {(subtitle) ? this.renderSubtitle() : null}
-      </React.Fragment>
-    )
-  }
+export const config = {
+  main: 'title',
+  subtitle: 'subtitle'
 }
+
+export const DocumentTitle = ({ title, show }) => show ? (
+  <Helmet>
+    <meta charSet='utf-8' />
+    <title data-testid='documentTitle'>{`${title} – ${APP_NAME}`}</title>
+  </Helmet>
+) : null
+
+DocumentTitle.propTypes = {
+  title: PropTypes.string.isRequired,
+  documentTitle: PropTypes.bool
+}
+
+DocumentTitle.defaultProps = {
+  title: 'Elysium title',
+  show: true
+}
+
+export const Subtitle = ({ subtitle }) => subtitle
+  ? <h2 className={config.subtitle}>{subtitle}</h2>
+  : null
+
+Subtitle.propTypes = {
+  subtitle: PropTypes.string
+}
+
+Subtitle.defaultProps = {
+  subtitle: ''
+}
+
+const Title = ({ title, subtitle, documentTitle }) => (
+  <React.Fragment>
+    <h1 className={config.main}>{title}</h1>
+    <Subtitle subtitle={subtitle} />
+    <DocumentTitle title={title} show={documentTitle} />
+  </React.Fragment>
+)
 
 Title.propTypes = {
   title: PropTypes.string.isRequired,
@@ -49,7 +56,7 @@ Title.propTypes = {
 
 Title.defaultProps = {
   title: 'Elysium title',
-  subtitle: null,
+  subtitle: '',
   documentTitle: true
 }
 

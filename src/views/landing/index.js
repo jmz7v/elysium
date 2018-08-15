@@ -7,11 +7,11 @@ import './index.css'
 class Landing extends Component {
   render () {
     return (
-      <section class='section'>
-        <div class='container'>
-          <h1 class='title'>Elysium</h1>
-          <h2 class='subtitle'>React app</h2>
-          <a class='button is-primary' href='/login'>Login</a>
+      <section className='section'>
+        <div className='container'>
+          <h1 className='title'>Elysium</h1>
+          <h2 className='subtitle'>React app</h2>
+          <a className='button is-primary' href='/login'>Login</a>
         </div>
       </section>
     )
