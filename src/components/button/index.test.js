@@ -12,7 +12,8 @@ const props = {
   text: 'button',
   className: 'special-classname',
   kind: 'is-primary',
-  loading: false
+  loading: false,
+  onClick: () => {}
 }
 
 describe('Button', () => {
