@@ -55,6 +55,7 @@ class Input extends React.Component {
 
   renderInput () {
     const { valid, invalid, value, type, disabled } = this.state
+    const { placeholder } = this.props
     const className = classNames('input', {
       'is-success': valid,
       'is-danger': invalid
@@ -65,7 +66,7 @@ class Input extends React.Component {
         className={className}
         type={type}
         disabled={disabled}
-        placeholder='Text input'
+        placeholder={placeholder}
         value={value}
         onChange={this.setValue}
       />
