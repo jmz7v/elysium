@@ -7,6 +7,8 @@ import validator from 'components/validator'
 
 const numericKeys = ['isInteger', 'isNumber']
 
+const ENTER_KEY_CODE = 13
+
 class Input extends React.Component {
   state = {
     value: this.props.defaultValue,
@@ -61,16 +63,19 @@ class Input extends React.Component {
       'is-danger': invalid
     })
 
-    return (
-      <input
-        className={className}
-        type={type}
-        disabled={disabled}
-        placeholder={placeholder}
-        value={value}
-        onChange={this.setValue}
-      />
-    )
+    const props = {
+      className,
+      type,
+      disabled,
+      placeholder,
+      value,
+      onChange: this.setValue,
+      onKeyDown: key => {
+        if (key.keyCode === ENTER_KEY_CODE) { this.props.handlePrimary() }
+      }
+    }
+
+    return <input {...props} />
   }
 
   render () {

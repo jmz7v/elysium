@@ -95,6 +95,7 @@ class Form extends Component {
       name: name,
       valueChanged: this.valueChanged,
       ref: this.fieldRefs[name],
+      handlePrimary: this.handlePrimary,
       ...props
     }
     switch (props.type) {
