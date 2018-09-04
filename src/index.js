@@ -10,7 +10,7 @@ import Dashboard from 'views/dashboard'
 
 // Other
 import './styles/index.css'
-import 'bulma/css/bulma.css'
+// import 'bulma/css/bulma.css'
 import registerServiceWorker from './registerServiceWorker'
 
 // Private routes

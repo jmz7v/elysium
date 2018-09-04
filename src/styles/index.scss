@@ -5,3 +5,33 @@
 // Main variables
 
 // Components
+
+// Personalize bulma
+@charset "utf-8";
+
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,400,700');
+
+// Set your brand colors
+$purple: #8321d3;
+$pink: #FA7C91;
+$brown: #757763;
+$green: #0cb520;
+$beige-light: #D0D1CD;
+
+// Update Bulma's global variables
+$family-sans-serif: "IBM Plex Sans", sans-serif;
+$grey-dark: $brown;
+$grey-light: $beige-light;
+$primary: $purple;
+
+
+// Update some of Bulma's component variables
+$body-background-color: #f9f9f9;
+
+@import "./../../node_modules/bulma/sass/utilities/_all.sass";
+@import "./../../node_modules/bulma/sass/base/_all.sass";
+@import "./../../node_modules/bulma/sass/components/_all.sass";
+@import "./../../node_modules/bulma/sass/elements/_all.sass";
+@import "./../../node_modules/bulma/sass/grid/_all.sass";
+@import "./../../node_modules/bulma/sass/layout/_all.sass";
