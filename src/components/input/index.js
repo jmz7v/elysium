@@ -3,10 +3,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+// Components
 import validator from 'components/validator'
 
+// Constants
 const numericKeys = ['isInteger', 'isNumber']
-
 const ENTER_KEY_CODE = 13
 
 class Input extends React.Component {
