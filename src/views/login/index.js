@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom'
 // Components
 import Title from 'components/title'
 import Form from 'components/form'
+import Loading from 'components/loading'
 
 const form = {
   title: 'Ingresa',
@@ -115,6 +116,7 @@ class Login extends Component {
             handleSecondary={this.handleSecondary}
             {...form}
           />
+          <Loading />
           {this.redirectToDashboard()}
           {this.redirectToRecover()}
         </div>
