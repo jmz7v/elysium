@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom'
 import Title from 'components/title'
 import Form from 'components/form'
 import Loading from 'components/loading'
+import Column, { Columns } from 'components/columns'
 
 const form = {
   title: 'Ingresa',
@@ -110,13 +111,19 @@ class Login extends Component {
             title='Inicia sesión'
             subtitle='O crea una cuenta'
           />
-          <Form
-            loading={loading}
-            handlePrimary={this.handlePrimary}
-            handleSecondary={this.handleSecondary}
-            {...form}
-          />
-          <Loading />
+          <Columns>
+            <Column>
+              <Form
+                loading={loading}
+                handlePrimary={this.handlePrimary}
+                handleSecondary={this.handleSecondary}
+                {...form}
+              />
+            </Column>
+            <Column>
+              <Loading />
+            </Column>
+          </Columns>
           {this.redirectToDashboard()}
           {this.redirectToRecover()}
         </div>

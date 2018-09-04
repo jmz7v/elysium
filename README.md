@@ -15,7 +15,8 @@ Desired components:
 - [x] Tabs
 - [x] Form
 - [x] Options
-- [ ] Select – July 2018
+- [x] Select
+- [x] Columns
 - [ ] Table – July 2018
 - [ ] Avatar – July 2018
 - [ ] List – August 2018
