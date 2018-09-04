@@ -49,6 +49,18 @@ const form = {
         {value: '2', label: 'como'},
         {value: '3', label: 'estás?'}
       ]
+    },
+    {
+      name: 'select',
+      label: 'select',
+      type: 'select',
+      defaultValue: '3',
+      required: true,
+      options: [
+        {value: '1', label: 'Hola'},
+        {value: '2', label: 'como'},
+        {value: '3', label: 'estás?'}
+      ]
     }
   ],
   primary: 'Ingresar',

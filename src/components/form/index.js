@@ -7,6 +7,7 @@ import PropTypes from 'prop-types'
 import Input from 'components/input'
 import Button from 'components/button'
 import Options from 'components/options'
+import Select from 'components/select'
 
 const defaultField = {
   value: '',
@@ -104,6 +105,8 @@ class Form extends Component {
         return <Input {...sharedProps} />
       case 'options':
         return <Options {...sharedProps} />
+      case 'select':
+        return <Select {...sharedProps} />
       default:
         return <Options {...sharedProps} />
     }
