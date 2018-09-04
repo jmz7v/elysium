@@ -10,7 +10,7 @@ import validator from 'components/validator'
 const numericKeys = ['isInteger', 'isNumber']
 const ENTER_KEY_CODE = 13
 
-class Input extends React.Component {
+class Select extends React.Component {
   state = {
     value: this.props.defaultValue,
     type: this.props.type,
@@ -56,10 +56,10 @@ class Input extends React.Component {
     return <p className='help is-danger'>{invalidMessage}</p>
   }
 
-  renderInput () {
+  renderSelect () {
     const { valid, invalid, value, type, disabled } = this.state
     const { placeholder, options } = this.props
-    const className = classNames('input', {
+    const className = classNames({
       'is-success': valid,
       'is-danger': invalid
     })
@@ -87,33 +87,35 @@ class Input extends React.Component {
     return (
       <div className='field'>
         {this.renderLabel()}
-        <div className='select'>{this.renderInput()}</div>
+        <div className='select'>{this.renderSelect()}</div>
         {this.renderError()}
       </div>
     )
   }
 }
 
-Input.propTypes = {
+Select.propTypes = {
   defaultValue: PropTypes.string,
   label: PropTypes.string,
   help: PropTypes.string,
   valueChanged: PropTypes.func,
   type: PropTypes.string,
+  options: PropTypes.array,
   disabled: PropTypes.bool,
   valid: PropTypes.bool,
   invalid: PropTypes.bool
 }
 
-Input.defaultProps = {
+Select.defaultProps = {
   defaultValue: '',
   label: '',
   help: '',
   valueChanged: value => { console.log(`valueChanged to ${value}`) },
   type: 'text',
+  options: [],
   disabled: false,
   valid: false,
   invalid: false
 }
 
-export default Input
+export default Select
