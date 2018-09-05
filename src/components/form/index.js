@@ -66,21 +66,25 @@ class Form extends Component {
 
   renderPrimary (text) {
     return (
-      <Button
-        text={text}
-        onClick={this.handlePrimary}
-        kind='is-primary'
-      />
+      <div className='control'>
+        <Button
+          text={text}
+          onClick={this.handlePrimary}
+          kind='is-primary'
+        />
+      </div>
     )
   }
 
   renderSecondary (text) {
     return (
-      <Button
-        text={text}
-        onClick={this.handleSecondary}
-        kind='is-light'
-      />
+      <div className='control'>
+        <Button
+          text={text}
+          onClick={this.handleSecondary}
+          kind='is-light'
+        />
+      </div>
     )
   }
 
@@ -126,8 +130,10 @@ class Form extends Component {
     return (
       <React.Fragment>
         {fields && this.renderFields(fields)}
-        {primary && this.renderPrimary(primary)}
-        {secondary && this.renderSecondary(secondary)}
+        <div className='field is-grouped'>
+          {primary && this.renderPrimary(primary)}
+          {secondary && this.renderSecondary(secondary)}
+        </div>
       </React.Fragment>
     )
   }
