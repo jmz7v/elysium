@@ -73,7 +73,8 @@ class Input extends React.Component {
       onChange: this.setValue,
       onKeyDown: key => {
         if (key.keyCode === ENTER_KEY_CODE) { this.props.handlePrimary() }
-      }
+      },
+      onBlur: this.validate
     }
 
     return <input {...props} />
