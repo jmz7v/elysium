@@ -39,6 +39,27 @@
     "stylelint-config-standard": "^18.2.0",
     "stylelint-scss": "3.4.0"
   },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "at-rule-no-unknown": null
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+    "lint-staged": {
+    "src/**/*.js": [
+      "npm run lint-js",
+      "git add"
+    ],
+    "src/**/*.scss": [
+      "npm run lint-css",
+      "git add"
+    ]
+  },
   "standard": {
     "parser": "babel-eslint",
     "env": [
