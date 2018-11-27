@@ -5,11 +5,10 @@ start:
 	yarn start
 
 standard:
-	standard --fix
+	yarn lint
 
 lint:
-	standard --fix
+	yarn lint
 
 test:
 	yarn test
-
