@@ -10,8 +10,6 @@ import Dashboard from 'views/dashboard'
 
 // Other
 import './styles/index.scss'
-// import 'bulma/css/bulma.css'
-import registerServiceWorker from './registerServiceWorker'
 
 // Private routes
 const App = () => (
@@ -42,4 +40,3 @@ const Elysium = () => (
 )
 
 ReactDOM.render(<Elysium />, document.getElementById('root'))
-registerServiceWorker()
