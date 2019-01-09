@@ -1,12 +1,12 @@
 // Libraries
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 // Components
-import Title from 'components/title'
-import Form from 'components/form'
-import Loading from 'components/loading'
-import Column, { Columns } from 'components/columns'
+import Title from 'components/title';
+import Form from 'components/form';
+import Loading from 'components/loading';
+import Column, { Columns } from 'components/columns';
 
 const form = {
   title: 'Ingresa',
@@ -17,28 +17,28 @@ const form = {
       type: 'text',
       defaultValue: 'test@domain.com',
       required: true,
-      isEmail: true
+      isEmail: true,
     },
     {
       name: 'password',
       label: 'password',
       type: 'password',
       defaultValue: 'password',
-      required: true
+      required: true,
     },
     {
       name: 'integer',
       label: 'integer',
       type: 'text',
       defaultValue: '1',
-      isInteger: true
+      isInteger: true,
     },
     {
       name: 'number',
       label: 'number',
       type: 'text',
       defaultValue: '1.0',
-      isNumber: true
+      isNumber: true,
     },
     {
       name: 'options',
@@ -47,10 +47,10 @@ const form = {
       // defaultValue: '1',
       required: true,
       options: [
-        {value: '1', label: 'Hola'},
-        {value: '2', label: 'como'},
-        {value: '3', label: 'estás?'}
-      ]
+        { value: '1', label: 'Hola' },
+        { value: '2', label: 'como' },
+        { value: '3', label: 'estás?' },
+      ],
     },
     {
       name: 'select',
@@ -59,58 +59,51 @@ const form = {
       defaultValue: '3',
       required: true,
       options: [
-        {value: '1', label: 'Hola'},
-        {value: '2', label: 'como'},
-        {value: '3', label: 'estás?'}
-      ]
-    }
+        { value: '1', label: 'Hola' },
+        { value: '2', label: 'como' },
+        { value: '3', label: 'estás?' },
+      ],
+    },
   ],
   primary: 'Ingresar',
-  secondary: 'Olvidé mi contraseña'
-}
+  secondary: 'Olvidé mi contraseña',
+};
 
 class Login extends Component {
-  constructor () {
-    super()
+  constructor() {
+    super();
     this.data = {
       loading: false,
       loggedIn: false,
-      forgotPassword: false
-    }
-    this.state = {...this.data}
+      forgotPassword: false,
+    };
+    this.state = { ...this.data };
   }
 
-  redirectToDashboard () {
-    return this.state.loggedIn
-      ? <Redirect to='/dashboard' />
-      : null
+  redirectToDashboard() {
+    return this.state.loggedIn ? <Redirect to="/dashboard" /> : null;
   }
 
-  redirectToRecover () {
-    return this.state.forgotPassword
-      ? <Redirect to='/recover' />
-      : null
+  redirectToRecover() {
+    return this.state.forgotPassword ? <Redirect to="/recover" /> : null;
   }
 
   handlePrimary = data => {
-    console.log(data)
+    console.log(data);
     // TODO: Call to api
     // this.setState({loggedIn: true})
-  }
+  };
 
   handleSecondary = () => {
-    this.setState({forgotPassword: true})
-  }
+    this.setState({ forgotPassword: true });
+  };
 
-  render () {
-    const { loading } = this.state
+  render() {
+    const { loading } = this.state;
     return (
-      <section className='section'>
-        <div className='container'>
-          <Title
-            title='Inicia sesión'
-            subtitle='O crea una cuenta'
-          />
+      <section className="section">
+        <div className="container">
+          <Title title="Inicia sesión" subtitle="O crea una cuenta" />
           <Columns>
             <Column>
               <Form
@@ -128,8 +121,8 @@ class Login extends Component {
           {this.redirectToRecover()}
         </div>
       </section>
-    )
+    );
   }
 }
 
-export default Login
+export default Login;

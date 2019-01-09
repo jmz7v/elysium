@@ -1,26 +1,21 @@
-
 // Libraries
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 // Components
-import Nav from 'components/nav'
-import Title from 'components/title'
-import Tabs, { TabList, Tab, TabPanels, Panel, SetStep } from 'components/tabs'
-import Button from 'components/button'
-import Input from 'components/input'
+import Nav from 'components/nav';
+import Title from 'components/title';
+import Tabs, { TabList, Tab, TabPanels, Panel, SetStep } from 'components/tabs';
+import Button from 'components/button';
+import Input from 'components/input';
 
 class Dashboard extends Component {
-  render () {
+  render() {
     return (
       <React.Fragment>
         <Nav />
-        <Title
-          title='Dashboard'
-        />
+        <Title title="Dashboard" />
         <Tabs>
-          <TabList
-            disabled={false}
-          >
+          <TabList disabled={false}>
             <Tab>Holi</Tab>
             <Tab>Holi 2</Tab>
             <Tab>Holi 3</Tab>
@@ -47,8 +42,8 @@ class Dashboard extends Component {
         <Button />
         <Input />
       </React.Fragment>
-    )
+    );
   }
 }
 
-export default Dashboard
+export default Dashboard;

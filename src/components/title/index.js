@@ -1,44 +1,44 @@
 // Libraries
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
 
 // Other
-const APP_NAME = 'Elysium React Boilerplate'
+const APP_NAME = 'Elysium React Boilerplate';
 
 export const config = {
   main: 'title',
-  subtitle: 'subtitle'
-}
+  subtitle: 'subtitle',
+};
 
-export const DocumentTitle = ({ title, show }) => show ? (
-  <Helmet>
-    <meta charSet='utf-8' />
-    <title data-testid='documentTitle'>{`${title} – ${APP_NAME}`}</title>
-  </Helmet>
-) : null
+export const DocumentTitle = ({ title, show }) =>
+  show ? (
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title data-testid="documentTitle">{`${title} – ${APP_NAME}`}</title>
+    </Helmet>
+  ) : null;
 
 DocumentTitle.propTypes = {
   title: PropTypes.string.isRequired,
-  documentTitle: PropTypes.bool
-}
+  documentTitle: PropTypes.bool,
+};
 
 DocumentTitle.defaultProps = {
   title: 'Elysium title',
-  show: true
-}
+  show: true,
+};
 
-export const Subtitle = ({ subtitle }) => subtitle
-  ? <h2 className={config.subtitle}>{subtitle}</h2>
-  : null
+export const Subtitle = ({ subtitle }) =>
+  subtitle ? <h2 className={config.subtitle}>{subtitle}</h2> : null;
 
 Subtitle.propTypes = {
-  subtitle: PropTypes.string
-}
+  subtitle: PropTypes.string,
+};
 
 Subtitle.defaultProps = {
-  subtitle: ''
-}
+  subtitle: '',
+};
 
 const Title = ({ title, subtitle, documentTitle }) => (
   <React.Fragment>
@@ -46,18 +46,18 @@ const Title = ({ title, subtitle, documentTitle }) => (
     <Subtitle subtitle={subtitle} />
     <DocumentTitle title={title} show={documentTitle} />
   </React.Fragment>
-)
+);
 
 Title.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
-  documentTitle: PropTypes.bool
-}
+  documentTitle: PropTypes.bool,
+};
 
 Title.defaultProps = {
   title: 'Elysium title',
   subtitle: '',
-  documentTitle: true
-}
+  documentTitle: true,
+};
 
-export default Title
+export default Title;

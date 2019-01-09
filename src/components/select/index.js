@@ -1,14 +1,14 @@
 // Libraries
-import React from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 // Components
-import validator from 'components/validator'
+import validator from 'components/validator';
 
 // Constants
-const numericKeys = ['isInteger', 'isNumber']
-const ENTER_KEY_CODE = 13
+const numericKeys = ['isInteger', 'isNumber'];
+const ENTER_KEY_CODE = 13;
 
 class Select extends React.Component {
   state = {
@@ -18,51 +18,56 @@ class Select extends React.Component {
     disabled: this.props.disabled,
     valid: this.props.valid,
     invalid: this.props.invalid,
-    invalidMessage: ''
-  }
+    invalidMessage: '',
+  };
 
   validate = () => {
-    return validator(this)
-  }
+    return validator(this);
+  };
 
   validateAndExport = () => {
-    return this.validate() ? this.export() : null
-  }
+    return this.validate() ? this.export() : null;
+  };
 
   export = () => {
-    const formattedValue = Object.keys(this.props).some(numericKey => numericKeys.includes(numericKey))
+    const formattedValue = Object.keys(this.props).some(numericKey =>
+      numericKeys.includes(numericKey)
+    )
       ? Number(this.state.value)
-      : this.state.value
-    return ({[this.props.name]: formattedValue})
-  }
+      : this.state.value;
+    return { [this.props.name]: formattedValue };
+  };
 
   setValue = e => {
-    this.setState({
-      value: e.currentTarget.value
-    }, () => {
-      this.props.valueChanged(this.props.name, this.state.value)
-    })
+    this.setState(
+      {
+        value: e.currentTarget.value,
+      },
+      () => {
+        this.props.valueChanged(this.props.name, this.state.value);
+      }
+    );
+  };
+
+  renderLabel() {
+    const { label } = this.props;
+    if (label.length === 0) return null;
+    return <label className="label">{label}</label>;
   }
 
-  renderLabel () {
-    const { label } = this.props
-    if (label.length === 0) return null
-    return <label className='label'>{label}</label>
+  renderError() {
+    const { invalidMessage } = this.state;
+    if (invalidMessage.length === 0) return null;
+    return <p className="help is-danger">{invalidMessage}</p>;
   }
 
-  renderError () {
-    const { invalidMessage } = this.state
-    if (invalidMessage.length === 0) return null
-    return <p className='help is-danger'>{invalidMessage}</p>
-  }
-
-  renderSelect () {
-    const { valid, invalid, value, type, disabled } = this.state
-    const { placeholder, options } = this.props
+  renderSelect() {
+    const { valid, invalid, value, type, disabled } = this.state;
+    const { placeholder, options } = this.props;
     const className = classNames({
       'is-success': valid,
-      'is-danger': invalid
-    })
+      'is-danger': invalid,
+    });
 
     const props = {
       className,
@@ -72,25 +77,29 @@ class Select extends React.Component {
       value,
       onChange: this.setValue,
       onKeyDown: key => {
-        if (key.keyCode === ENTER_KEY_CODE) { this.props.handlePrimary() }
-      }
-    }
+        if (key.keyCode === ENTER_KEY_CODE) {
+          this.props.handlePrimary();
+        }
+      },
+    };
 
     const renderOptions = options.map(option => (
-      <option value={option.value} key={option.value}>{option.label}</option>
-    ))
+      <option value={option.value} key={option.value}>
+        {option.label}
+      </option>
+    ));
 
-    return <select {...props}>{renderOptions}</select>
+    return <select {...props}>{renderOptions}</select>;
   }
 
-  render () {
+  render() {
     return (
-      <div className='field'>
+      <div className="field">
         {this.renderLabel()}
-        <div className='select'>{this.renderSelect()}</div>
+        <div className="select">{this.renderSelect()}</div>
         {this.renderError()}
       </div>
-    )
+    );
   }
 }
 
@@ -103,19 +112,21 @@ Select.propTypes = {
   options: PropTypes.array,
   disabled: PropTypes.bool,
   valid: PropTypes.bool,
-  invalid: PropTypes.bool
-}
+  invalid: PropTypes.bool,
+};
 
 Select.defaultProps = {
   defaultValue: '',
   label: '',
   help: '',
-  valueChanged: value => { console.log(`valueChanged to ${value}`) },
+  valueChanged: value => {
+    console.log(`valueChanged to ${value}`);
+  },
   type: 'text',
   options: [],
   disabled: false,
   valid: false,
-  invalid: false
-}
+  invalid: false,
+};
 
-export default Select
+export default Select;
