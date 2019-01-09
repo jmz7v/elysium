@@ -20,18 +20,17 @@ $green: #0cb520;
 $beige-light: #d0d1cd;
 
 // Update Bulma's global variables
-$family-sans-serif: "IBM Plex Sans", sans-serif;
+$family-sans-serif: 'IBM Plex Sans', sans-serif;
 $grey-dark: $brown;
 $grey-light: $beige-light;
 $primary: $purple;
 
-
 // Update some of Bulma's component variables
 $body-background-color: #f9f9f9;
 
-@import "./../../node_modules/bulma/sass/utilities/_all.sass";
-@import "./../../node_modules/bulma/sass/base/_all.sass";
-@import "./../../node_modules/bulma/sass/components/_all.sass";
-@import "./../../node_modules/bulma/sass/elements/_all.sass";
-@import "./../../node_modules/bulma/sass/grid/_all.sass";
-@import "./../../node_modules/bulma/sass/layout/_all.sass";
+@import './../../node_modules/bulma/sass/utilities/_all.sass';
+@import './../../node_modules/bulma/sass/base/_all.sass';
+@import './../../node_modules/bulma/sass/components/_all.sass';
+@import './../../node_modules/bulma/sass/elements/_all.sass';
+@import './../../node_modules/bulma/sass/grid/_all.sass';
+@import './../../node_modules/bulma/sass/layout/_all.sass';

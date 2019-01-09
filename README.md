@@ -28,6 +28,7 @@ make run
 Create some useful components and utilities:
 
 Desired components:
+
 - [x] Input
 - [x] Button
 - [x] Title
@@ -42,14 +43,17 @@ Desired components:
 - [ ] Card – August 2018
 
 Desired utilities:
+
 - [ ] Dates – August 2018
 - [ ] Currency – August 2018
 
 UI:
+
 - [ ] Datepicker
 - [ ] Maybe custom UI in the furure using render props
 
 Code:
+
 - [ ] Axios wrapper
 - [ ] Auth mock
 
