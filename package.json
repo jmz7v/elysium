@@ -19,7 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "prettier --trailing-comma es5 --single-quote --write '*/*.js' '*/!(node_modules)/**/*.js'",
+    "lint": "prettier --write '**/*.js' '**/*.css' '**/*.scss' '**/*.md'",
     "test": "react-scripts test --env=jsdom",
     "coverage": "yarn test --coverage",
     "eject": "react-scripts eject"
@@ -38,6 +38,18 @@
     "stylelint-config-standard": "^18.2.0",
     "stylelint-scss": "3.4.0"
   },
+  "eslint": {
+    "extends": "react-app",
+    "plugins": ["prettier"],
+    "rules": {
+      "prettier/prettier": "error"
+    }
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "semi": true
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -45,7 +57,7 @@
   },
   "lint-staged": {
     "*.{js,md,css,html}": [
-      "prettier --trailing-comma es5 --single-quote --write",
+      "lint",
       "git add"
     ],
     "yarn.lock": [
