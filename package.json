@@ -19,9 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "npm-run-all -s lint-css lint-js",
-    "lint-js": "node_modules/.bin/standard --fix",
-    "lint-css": "node_modules/.bin/stylelint --fix \"**/*.scss\"",
+    "lint": "prettier --trailing-comma es5 --single-quote --write '*/*.js' '*/!(node_modules)/**/*.js'",
     "test": "react-scripts test --env=jsdom",
     "coverage": "yarn test --coverage",
     "eject": "react-scripts eject"
@@ -40,31 +38,18 @@
     "stylelint-config-standard": "^18.2.0",
     "stylelint-scss": "3.4.0"
   },
-  "stylelint": {
-    "extends": "stylelint-config-standard",
-    "rules": {
-      "at-rule-no-unknown": null
-    }
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "src/**/*.js": [
-      "npm run lint-js",
+    "*.{js,md,css,html}": [
+      "prettier --trailing-comma es5 --single-quote --write",
       "git add"
     ],
-    "src/**/*.scss": [
-      "npm run lint-css",
-      "git add"
-    ]
-  },
-  "standard": {
-    "parser": "babel-eslint",
-    "env": [
-      "jest"
+    "yarn.lock": [
+      "git rm --cached"
     ]
   },
   "browserslist": [
