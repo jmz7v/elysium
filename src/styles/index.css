@@ -6,7 +6,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,400,700');
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,400,700");
 html {
   line-height: 1.15;
   /* 1 */
@@ -182,9 +182,9 @@ select {
  * Correct the inability to style clickable types in iOS and Safari.
  */
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
+[type="button"],
+[type="reset"],
+[type="submit"] {
   -webkit-appearance: button;
 }
 
@@ -192,9 +192,9 @@ button,
  * Remove the inner border and padding in Firefox.
  */
 button::-moz-focus-inner,
-[type='button']::-moz-focus-inner,
-[type='reset']::-moz-focus-inner,
-[type='submit']::-moz-focus-inner {
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -203,9 +203,9 @@ button::-moz-focus-inner,
  * Restore the focus styles unset by the previous rule.
  */
 button:-moz-focusring,
-[type='button']:-moz-focusring,
-[type='reset']:-moz-focusring,
-[type='submit']:-moz-focusring {
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -255,8 +255,8 @@ textarea {
  * 1. Add the correct box sizing in IE 10.
  * 2. Remove the padding in IE 10.
  */
-[type='checkbox'],
-[type='radio'] {
+[type="checkbox"],
+[type="radio"] {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
@@ -266,8 +266,8 @@ textarea {
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-[type='number']::-webkit-inner-spin-button,
-[type='number']::-webkit-outer-spin-button {
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -275,7 +275,7 @@ textarea {
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
-[type='search'] {
+[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
@@ -285,7 +285,7 @@ textarea {
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
-[type='search']::-webkit-search-decoration {
+[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -415,42 +415,42 @@ html {
 .espacio-small:after,
 [espacio-small]:after {
   display: block;
-  content: '';
+  content: "";
   height: 2rem;
 }
 
 .espacio-medium:after,
 [espacio-medium]:after {
   display: block;
-  content: '';
+  content: "";
   height: 3.5rem;
 }
 
 .espacio-large:after,
 [espacio-large]:after {
   display: block;
-  content: '';
+  content: "";
   height: 5rem;
 }
 
 .espacio-xlarge:after,
 [espacio-xlarge]:after {
   display: block;
-  content: '';
+  content: "";
   height: 7rem;
 }
 
 .espacio-xxlarge:after,
 [espacio-xxlarge]:after {
   display: block;
-  content: '';
+  content: "";
   height: 9rem;
 }
 
 .espacio-sick:after,
 [espacio-sick]:after {
   display: block;
-  content: '';
+  content: "";
   height: 12rem;
 }
 
@@ -571,7 +571,7 @@ html {
   border-radius: 2px;
   border-right: 0;
   border-top: 0;
-  content: ' ';
+  content: " ";
   display: block;
   height: 0.625em;
   margin-top: -0.4375em;
@@ -629,7 +629,7 @@ html {
 .modal-close::after,
 .delete::after {
   background-color: white;
-  content: '';
+  content: "";
   display: block;
   left: 50%;
   position: absolute;
@@ -694,7 +694,7 @@ html {
   border-radius: 290486px;
   border-right-color: transparent;
   border-top-color: transparent;
-  content: '';
+  content: "";
   display: block;
   height: 1em;
   position: relative;
@@ -919,7 +919,7 @@ button,
 input,
 select,
 textarea {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
 }
 
 code,
@@ -969,8 +969,8 @@ img {
   max-width: 100%;
 }
 
-input[type='checkbox'],
-input[type='radio'] {
+input[type="checkbox"],
+input[type="radio"] {
   vertical-align: baseline;
 }
 
@@ -1017,7 +1017,7 @@ table th {
 
 .is-clearfix::after {
   clear: both;
-  content: ' ';
+  content: " ";
   display: table;
 }
 
@@ -2132,7 +2132,7 @@ a.has-text-danger:focus {
 }
 .breadcrumb li + li::before {
   color: #d0d1cd;
-  content: '\0002f';
+  content: "\0002f";
 }
 .breadcrumb ul,
 .breadcrumb ol {
@@ -2165,16 +2165,16 @@ a.has-text-danger:focus {
   font-size: 1.5rem;
 }
 .breadcrumb.has-arrow-separator li + li::before {
-  content: '\02192';
+  content: "\02192";
 }
 .breadcrumb.has-bullet-separator li + li::before {
-  content: '\02022';
+  content: "\02022";
 }
 .breadcrumb.has-dot-separator li + li::before {
-  content: '\000b7';
+  content: "\000b7";
 }
 .breadcrumb.has-succeeds-separator li + li::before {
-  content: '\0227B';
+  content: "\0227B";
 }
 
 .card {
@@ -4011,7 +4011,7 @@ a.navbar-item.is-active,
   justify-content: flex-start;
   padding: 0.5em 0.75em;
 }
-.panel-block input[type='checkbox'] {
+.panel-block input[type="checkbox"] {
   margin-right: 0.75em;
 }
 .panel-block > .control {
@@ -7348,7 +7348,7 @@ a.box:active {
 .tag:not(body).is-delete::before,
 .tag:not(body).is-delete::after {
   background-color: currentColor;
-  content: '';
+  content: "";
   display: block;
   left: 50%;
   position: absolute;

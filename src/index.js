@@ -1,15 +1,15 @@
 // Libraries
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Components
-import Landing from 'views/landing';
-import Login from 'views/login';
-import Dashboard from 'views/dashboard';
+import Landing from "views/landing";
+import Login from "views/login";
+import Dashboard from "views/dashboard";
 
 // Other
-import './styles/index.scss';
+import "./styles/index.scss";
 
 // Private routes
 const App = () => (
@@ -36,4 +36,4 @@ const Elysium = () => (
   </Router>
 );
 
-ReactDOM.render(<Elysium />, document.getElementById('root'));
+ReactDOM.render(<Elysium />, document.getElementById("root"));

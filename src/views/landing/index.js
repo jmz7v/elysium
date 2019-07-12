@@ -1,8 +1,8 @@
 // Libraries
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 // Other
-import './index.css';
+import "./index.css";
 
 class Landing extends Component {
   render() {

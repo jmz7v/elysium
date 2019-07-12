@@ -1,13 +1,13 @@
 // Libraries
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Tabs extends Component {
   constructor(props) {
     super(props);
     this.state = {
       value: this.props.defaultValue,
-      invalidMessage: '',
+      invalidMessage: ""
     };
   }
 
@@ -15,7 +15,7 @@ class Tabs extends Component {
     if (this.props.required) {
       const isValid = !!this.state.value;
       this.setState({
-        invalidMessage: isValid ? '' : 'Campo requerido',
+        invalidMessage: isValid ? "" : "Campo requerido"
       });
       return isValid;
     }
@@ -32,7 +32,7 @@ class Tabs extends Component {
 
   setValue = value => {
     this.setState({
-      value: this.state.value === value ? this.props.defaultValue : value,
+      value: this.state.value === value ? this.props.defaultValue : value
     });
   };
 
@@ -52,7 +52,7 @@ class Tabs extends Component {
         }}
       >
         {label}
-        {this.state.value === value ? 'active' : null}
+        {this.state.value === value ? "active" : null}
       </div>
     );
   }
@@ -80,12 +80,12 @@ class Tabs extends Component {
 
 Tabs.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, null]),
-  label: PropTypes.string,
+  label: PropTypes.string
 };
 
 Tabs.defaultProps = {
   defaultValue: null,
-  label: '',
+  label: ""
 };
 
 export default Tabs;

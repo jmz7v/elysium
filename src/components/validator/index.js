@@ -1,27 +1,27 @@
 // Libraries
-import validator from 'validator';
+import validator from "validator";
 
 const validations = {
   required: str => {
     const isValid = !validator.isEmpty(str);
-    const message = isValid ? '' : 'Campo requerido';
+    const message = isValid ? "" : "Campo requerido";
     return { isValid, message };
   },
   isEmail: str => {
     const isValid = validator.isEmail(str);
-    const message = isValid ? '' : 'Campo debe ser un correo electrónico';
+    const message = isValid ? "" : "Campo debe ser un correo electrónico";
     return { isValid, message };
   },
   isInteger: str => {
     const isValid = validator.isInt(str);
-    const message = isValid ? '' : 'Campo debe ser un número entero';
+    const message = isValid ? "" : "Campo debe ser un número entero";
     return { isValid, message };
   },
   isNumber: str => {
     const isValid = validator.isFloat(str);
-    const message = isValid ? '' : 'Campo debe ser un número';
+    const message = isValid ? "" : "Campo debe ser un número";
     return { isValid, message };
-  },
+  }
 };
 
 const validate = field => {
@@ -37,7 +37,7 @@ const validate = field => {
 
     field.setState({
       invalid: !isValid,
-      invalidMessage: message,
+      invalidMessage: message
     });
 
     // Abort on first error

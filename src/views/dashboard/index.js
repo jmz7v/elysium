@@ -1,12 +1,12 @@
 // Libraries
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 // Components
-import Nav from 'components/nav';
-import Title from 'components/title';
-import Tabs, { TabList, Tab, TabPanels, Panel, SetStep } from 'components/tabs';
-import Button from 'components/button';
-import Input from 'components/input';
+import Nav from "components/nav";
+import Title from "components/title";
+import Tabs, { TabList, Tab, TabPanels, Panel, SetStep } from "components/tabs";
+import Button from "components/button";
+import Input from "components/input";
 
 class Dashboard extends Component {
   render() {

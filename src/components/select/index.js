@@ -1,13 +1,13 @@
 // Libraries
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 // Components
-import validator from 'components/validator';
+import validator from "components/validator";
 
 // Constants
-const numericKeys = ['isInteger', 'isNumber'];
+const numericKeys = ["isInteger", "isNumber"];
 const ENTER_KEY_CODE = 13;
 
 class Select extends React.Component {
@@ -18,7 +18,7 @@ class Select extends React.Component {
     disabled: this.props.disabled,
     valid: this.props.valid,
     invalid: this.props.invalid,
-    invalidMessage: '',
+    invalidMessage: ""
   };
 
   validate = () => {
@@ -41,7 +41,7 @@ class Select extends React.Component {
   setValue = e => {
     this.setState(
       {
-        value: e.currentTarget.value,
+        value: e.currentTarget.value
       },
       () => {
         this.props.valueChanged(this.props.name, this.state.value);
@@ -65,8 +65,8 @@ class Select extends React.Component {
     const { valid, invalid, value, type, disabled } = this.state;
     const { placeholder, options } = this.props;
     const className = classNames({
-      'is-success': valid,
-      'is-danger': invalid,
+      "is-success": valid,
+      "is-danger": invalid
     });
 
     const props = {
@@ -80,7 +80,7 @@ class Select extends React.Component {
         if (key.keyCode === ENTER_KEY_CODE) {
           this.props.handlePrimary();
         }
-      },
+      }
     };
 
     const renderOptions = options.map(option => (
@@ -112,21 +112,21 @@ Select.propTypes = {
   options: PropTypes.array,
   disabled: PropTypes.bool,
   valid: PropTypes.bool,
-  invalid: PropTypes.bool,
+  invalid: PropTypes.bool
 };
 
 Select.defaultProps = {
-  defaultValue: '',
-  label: '',
-  help: '',
+  defaultValue: "",
+  label: "",
+  help: "",
   valueChanged: value => {
     console.log(`valueChanged to ${value}`);
   },
-  type: 'text',
+  type: "text",
   options: [],
   disabled: false,
   valid: false,
-  invalid: false,
+  invalid: false
 };
 
 export default Select;

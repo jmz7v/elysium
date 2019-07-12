@@ -1,29 +1,29 @@
 // Libraries
-import React, { Component } from 'react';
-import update from 'immutability-helper';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import update from "immutability-helper";
+import PropTypes from "prop-types";
 
 // Components
-import Input from 'components/input';
-import Button from 'components/button';
-import Options from 'components/options';
-import Select from 'components/select';
+import Input from "components/input";
+import Button from "components/button";
+import Options from "components/options";
+import Select from "components/select";
 
 const defaultField = {
-  value: '',
-  label: '',
-  help: '',
-  type: 'text',
+  value: "",
+  label: "",
+  help: "",
+  type: "text",
   disabled: false,
   valid: false,
-  invalid: false,
+  invalid: false
 };
 
 class Form extends Component {
   constructor(props) {
     super(props);
     this.data = {
-      fields: this.getDefaultFields(),
+      fields: this.getDefaultFields()
     };
     this.state = { ...this.data };
     this.fieldRefs = {};
@@ -85,7 +85,7 @@ class Form extends Component {
       field => field.name === name
     );
     const fields = update(this.state.fields, {
-      [fieldIndex]: { value: { $set: value } },
+      [fieldIndex]: { value: { $set: value } }
     });
     this.setState({ fields });
   };
@@ -97,15 +97,15 @@ class Form extends Component {
       valueChanged: this.valueChanged,
       ref: this.fieldRefs[name],
       handlePrimary: this.handlePrimary,
-      ...props,
+      ...props
     };
     switch (props.type) {
-      case 'text':
-      case 'password':
+      case "text":
+      case "password":
         return <Input {...sharedProps} />;
-      case 'options':
+      case "options":
         return <Options {...sharedProps} />;
-      case 'select':
+      case "select":
         return <Select {...sharedProps} />;
       default:
         return <Options {...sharedProps} />;
@@ -138,7 +138,7 @@ class Form extends Component {
 Form.propTypes = {
   handlePrimary: PropTypes.func.isRequired,
   handleSecondary: PropTypes.func.isRequired,
-  loading: PropTypes.bool,
+  loading: PropTypes.bool
 };
 
 Form.defaultProps = {
@@ -148,7 +148,7 @@ Form.defaultProps = {
   handleSecondary: data => {
     console.log({ data });
   },
-  loading: false,
+  loading: false
 };
 
 export default Form;

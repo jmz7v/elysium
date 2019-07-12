@@ -1,13 +1,13 @@
 // Libraries
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 // Components
-import validator from 'components/validator';
+import validator from "components/validator";
 
 // Constants
-const numericKeys = ['isInteger', 'isNumber'];
+const numericKeys = ["isInteger", "isNumber"];
 const ENTER_KEY_CODE = 13;
 
 class Input extends React.Component {
@@ -18,7 +18,7 @@ class Input extends React.Component {
     disabled: this.props.disabled,
     valid: this.props.valid,
     invalid: this.props.invalid,
-    invalidMessage: '',
+    invalidMessage: ""
   };
 
   validate = () => {
@@ -41,7 +41,7 @@ class Input extends React.Component {
   setValue = e => {
     this.setState(
       {
-        value: e.currentTarget.value,
+        value: e.currentTarget.value
       },
       () => {
         this.props.valueChanged(this.props.name, this.state.value);
@@ -64,9 +64,9 @@ class Input extends React.Component {
   renderInput() {
     const { valid, invalid, value, type, disabled } = this.state;
     const { placeholder } = this.props;
-    const className = classNames('input', {
-      'is-success': valid,
-      'is-danger': invalid,
+    const className = classNames("input", {
+      "is-success": valid,
+      "is-danger": invalid
     });
 
     const props = {
@@ -81,7 +81,7 @@ class Input extends React.Component {
           this.props.handlePrimary();
         }
       },
-      onBlur: this.validate,
+      onBlur: this.validate
     };
 
     return <input {...props} />;
@@ -106,20 +106,20 @@ Input.propTypes = {
   type: PropTypes.string,
   disabled: PropTypes.bool,
   valid: PropTypes.bool,
-  invalid: PropTypes.bool,
+  invalid: PropTypes.bool
 };
 
 Input.defaultProps = {
-  defaultValue: '',
-  label: '',
-  help: '',
+  defaultValue: "",
+  label: "",
+  help: "",
   valueChanged: value => {
     console.log(`valueChanged to ${value}`);
   },
-  type: 'text',
+  type: "text",
   disabled: false,
   valid: false,
-  invalid: false,
+  invalid: false
 };
 
 export default Input;

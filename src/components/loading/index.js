@@ -1,8 +1,8 @@
 // Libraries
-import React from 'react';
+import React from "react";
 
 // Components
-import Icon from 'components/icon';
+import Icon from "components/icon";
 
 // Button component
 const Loading = () => (

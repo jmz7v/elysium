@@ -1,5 +1,5 @@
 // Libraries
-import React from 'react';
+import React from "react";
 
 const Column = ({ children }) => <div className="column">{children}</div>;
 

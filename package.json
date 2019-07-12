@@ -47,11 +47,6 @@
       "prettier/prettier": "error"
     }
   },
-  "prettier": {
-    "trailingComma": "es5",
-    "singleQuote": true,
-    "semi": true
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
