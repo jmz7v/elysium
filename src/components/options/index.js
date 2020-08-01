@@ -7,7 +7,7 @@ class Tabs extends Component {
     super(props);
     this.state = {
       value: this.props.defaultValue,
-      invalidMessage: ""
+      invalidMessage: "",
     };
   }
 
@@ -15,7 +15,7 @@ class Tabs extends Component {
     if (this.props.required) {
       const isValid = !!this.state.value;
       this.setState({
-        invalidMessage: isValid ? "" : "Campo requerido"
+        invalidMessage: isValid ? "" : "Campo requerido",
       });
       return isValid;
     }
@@ -30,9 +30,9 @@ class Tabs extends Component {
     return this.validate() ? this.export() : null;
   }
 
-  setValue = value => {
+  setValue = (value) => {
     this.setState({
-      value: this.state.value === value ? this.props.defaultValue : value
+      value: this.state.value === value ? this.props.defaultValue : value,
     });
   };
 
@@ -58,7 +58,7 @@ class Tabs extends Component {
   }
 
   renderOptions() {
-    return this.props.options.map(option => this.renderOption(option));
+    return this.props.options.map((option) => this.renderOption(option));
   }
 
   renderError() {
@@ -80,12 +80,12 @@ class Tabs extends Component {
 
 Tabs.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, null]),
-  label: PropTypes.string
+  label: PropTypes.string,
 };
 
 Tabs.defaultProps = {
   defaultValue: null,
-  label: ""
+  label: "",
 };
 
 export default Tabs;

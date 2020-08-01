@@ -18,7 +18,7 @@ export const TabList = ({ children, active, onClick, ...props }) =>
     React.cloneElement(child, {
       active: index === active,
       disabled: props.disabled,
-      onClick: () => onClick(index)
+      onClick: () => onClick(index),
     })
   );
 
@@ -30,7 +30,7 @@ export const Panel = ({ active, children, onSetStep }) => (
         case SetStep:
           // return this.renderTabList(child)
           return React.cloneElement(child, {
-            onSetStep
+            onSetStep,
           });
         default:
           return child;
@@ -45,7 +45,7 @@ export const TabPanels = ({ children, active, onSetStep }) =>
     index === active
       ? React.cloneElement(child, {
           onSetStep: onSetStep,
-          active: index === active
+          active: index === active,
         })
       : null
   );
@@ -67,14 +67,14 @@ class Tabs extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: this.props.active
+      active: this.props.active,
     };
   }
 
   renderTabList(child) {
     const tabList = React.cloneElement(child, {
       active: this.state.active,
-      onClick: active => this.setState({ active })
+      onClick: (active) => this.setState({ active }),
     });
 
     return (
@@ -87,7 +87,7 @@ class Tabs extends Component {
   renderPanels(child) {
     const panels = React.cloneElement(child, {
       active: this.state.active,
-      onSetStep: active => this.setState({ active })
+      onSetStep: (active) => this.setState({ active }),
     });
 
     return <div className="panels">{panels}</div>;
@@ -114,7 +114,7 @@ class Tabs extends Component {
 Tabs.propTypes = {};
 
 Tabs.defaultProps = {
-  active: 0
+  active: 0,
 };
 
 export default Tabs;

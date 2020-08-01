@@ -9,7 +9,7 @@ import Title, { Subtitle, DocumentTitle, config } from "./index";
 afterEach(cleanup);
 
 const props = {
-  title: "hello"
+  title: "hello",
 };
 
 describe("<Title/>", () => {

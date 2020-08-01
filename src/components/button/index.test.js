@@ -13,7 +13,7 @@ const props = {
   className: "special-classname",
   kind: "is-primary",
   loading: false,
-  onClick: () => {}
+  onClick: () => {},
 };
 
 describe("Button", () => {
@@ -25,7 +25,7 @@ describe("Button", () => {
       getByText(props.text),
       new window.MouseEvent("click", {
         bubbles: true,
-        cancelable: true
+        cancelable: true,
       })
     );
 

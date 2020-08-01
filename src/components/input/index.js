@@ -18,7 +18,7 @@ class Input extends React.Component {
     disabled: this.props.disabled,
     valid: this.props.valid,
     invalid: this.props.invalid,
-    invalidMessage: ""
+    invalidMessage: "",
   };
 
   validate = () => {
@@ -30,7 +30,7 @@ class Input extends React.Component {
   };
 
   export = () => {
-    const formattedValue = Object.keys(this.props).some(numericKey =>
+    const formattedValue = Object.keys(this.props).some((numericKey) =>
       numericKeys.includes(numericKey)
     )
       ? Number(this.state.value)
@@ -38,10 +38,10 @@ class Input extends React.Component {
     return { [this.props.name]: formattedValue };
   };
 
-  setValue = e => {
+  setValue = (e) => {
     this.setState(
       {
-        value: e.currentTarget.value
+        value: e.currentTarget.value,
       },
       () => {
         this.props.valueChanged(this.props.name, this.state.value);
@@ -66,7 +66,7 @@ class Input extends React.Component {
     const { placeholder } = this.props;
     const className = classNames("input", {
       "is-success": valid,
-      "is-danger": invalid
+      "is-danger": invalid,
     });
 
     const props = {
@@ -76,12 +76,12 @@ class Input extends React.Component {
       placeholder,
       value,
       onChange: this.setValue,
-      onKeyDown: key => {
+      onKeyDown: (key) => {
         if (key.keyCode === ENTER_KEY_CODE) {
           this.props.handlePrimary();
         }
       },
-      onBlur: this.validate
+      onBlur: this.validate,
     };
 
     return <input {...props} />;
@@ -106,20 +106,20 @@ Input.propTypes = {
   type: PropTypes.string,
   disabled: PropTypes.bool,
   valid: PropTypes.bool,
-  invalid: PropTypes.bool
+  invalid: PropTypes.bool,
 };
 
 Input.defaultProps = {
   defaultValue: "",
   label: "",
   help: "",
-  valueChanged: value => {
+  valueChanged: (value) => {
     console.log(`valueChanged to ${value}`);
   },
   type: "text",
   disabled: false,
   valid: false,
-  invalid: false
+  invalid: false,
 };
 
 export default Input;

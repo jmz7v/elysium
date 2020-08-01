@@ -17,28 +17,28 @@ const form = {
       type: "text",
       defaultValue: "test@domain.com",
       required: true,
-      isEmail: true
+      isEmail: true,
     },
     {
       name: "password",
       label: "password",
       type: "password",
       defaultValue: "password",
-      required: true
+      required: true,
     },
     {
       name: "integer",
       label: "integer",
       type: "text",
       defaultValue: "1",
-      isInteger: true
+      isInteger: true,
     },
     {
       name: "number",
       label: "number",
       type: "text",
       defaultValue: "1.0",
-      isNumber: true
+      isNumber: true,
     },
     {
       name: "options",
@@ -49,8 +49,8 @@ const form = {
       options: [
         { value: "1", label: "Hola" },
         { value: "2", label: "como" },
-        { value: "3", label: "estás?" }
-      ]
+        { value: "3", label: "estás?" },
+      ],
     },
     {
       name: "select",
@@ -61,12 +61,12 @@ const form = {
       options: [
         { value: "1", label: "Hola" },
         { value: "2", label: "como" },
-        { value: "3", label: "estás?" }
-      ]
-    }
+        { value: "3", label: "estás?" },
+      ],
+    },
   ],
   primary: "Ingresar",
-  secondary: "Olvidé mi contraseña"
+  secondary: "Olvidé mi contraseña",
 };
 
 class Login extends Component {
@@ -75,7 +75,7 @@ class Login extends Component {
     this.data = {
       loading: false,
       loggedIn: false,
-      forgotPassword: false
+      forgotPassword: false,
     };
     this.state = { ...this.data };
   }
@@ -88,7 +88,7 @@ class Login extends Component {
     return this.state.forgotPassword ? <Redirect to="/recover" /> : null;
   }
 
-  handlePrimary = data => {
+  handlePrimary = (data) => {
     console.log(data);
     // TODO: Call to api
     // this.setState({loggedIn: true})

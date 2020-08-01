@@ -20,7 +20,7 @@ const App = () => (
 
 // Bridge to render all private routes
 const Private = (...routeProps) => (
-  <Route {...routeProps} render={props => <App {...props} />} />
+  <Route {...routeProps} render={(props) => <App {...props} />} />
 );
 
 // Main router, provides auth an non-auth routes

@@ -16,28 +16,28 @@ const defaultField = {
   type: "text",
   disabled: false,
   valid: false,
-  invalid: false
+  invalid: false,
 };
 
 class Form extends Component {
   constructor(props) {
     super(props);
     this.data = {
-      fields: this.getDefaultFields()
+      fields: this.getDefaultFields(),
     };
     this.state = { ...this.data };
     this.fieldRefs = {};
-    this.getFieldNames().map(field => {
+    this.getFieldNames().map((field) => {
       this.fieldRefs[field] = React.createRef();
     });
   }
 
   getFieldNames = () => {
-    return this.props.fields.map(field => field.name);
+    return this.props.fields.map((field) => field.name);
   };
 
   getDefaultFields = () => {
-    return this.props.fields.map(field => ({ ...defaultField, ...field }));
+    return this.props.fields.map((field) => ({ ...defaultField, ...field }));
   };
 
   handlePrimary = () => {
@@ -50,13 +50,13 @@ class Form extends Component {
 
   validate = () => {
     return this.getFieldNames()
-      .map(field => this.fieldRefs[field].current.validate())
-      .every(field => field);
+      .map((field) => this.fieldRefs[field].current.validate())
+      .every((field) => field);
   };
 
   export = () => {
     return this.getFieldNames()
-      .map(field => this.fieldRefs[field].current.export())
+      .map((field) => this.fieldRefs[field].current.export())
       .reduce((acc, i) => ({ ...acc, ...i }), {});
   };
 
@@ -82,10 +82,10 @@ class Form extends Component {
 
   valueChanged = (name, value) => {
     const fieldIndex = this.state.fields.findIndex(
-      field => field.name === name
+      (field) => field.name === name
     );
     const fields = update(this.state.fields, {
-      [fieldIndex]: { value: { $set: value } }
+      [fieldIndex]: { value: { $set: value } },
     });
     this.setState({ fields });
   };
@@ -97,7 +97,7 @@ class Form extends Component {
       valueChanged: this.valueChanged,
       ref: this.fieldRefs[name],
       handlePrimary: this.handlePrimary,
-      ...props
+      ...props,
     };
     switch (props.type) {
       case "text":
@@ -115,7 +115,7 @@ class Form extends Component {
   renderFields(fields) {
     return (
       <React.Fragment>
-        {fields.map(field => this.renderField(field))}
+        {fields.map((field) => this.renderField(field))}
       </React.Fragment>
     );
   }
@@ -138,17 +138,17 @@ class Form extends Component {
 Form.propTypes = {
   handlePrimary: PropTypes.func.isRequired,
   handleSecondary: PropTypes.func.isRequired,
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
 };
 
 Form.defaultProps = {
-  handlePrimary: data => {
+  handlePrimary: (data) => {
     console.log({ data });
   },
-  handleSecondary: data => {
+  handleSecondary: (data) => {
     console.log({ data });
   },
-  loading: false
+  loading: false,
 };
 
 export default Form;

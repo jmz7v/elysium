@@ -1,8 +1,8 @@
 const config = {
   baseURL: "https://example.com/api",
   headers: {
-    "Content-Type": "application/json"
-  }
+    "Content-Type": "application/json",
+  },
 };
 
 class User {
@@ -21,5 +21,5 @@ class User {
 }
 
 export default {
-  User
+  User,
 };
