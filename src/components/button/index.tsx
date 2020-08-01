@@ -11,7 +11,7 @@ export const config = {
 };
 
 // Button component
-const Button = ({ onClick, disabled, loading, className, kind, text }) => (
+export const Button = ({ onClick, disabled, loading, className, kind, text }) => (
   <button
     className={classNames(config.main, className, kind, {
       [config.loading]: loading,
@@ -41,5 +41,3 @@ Button.defaultProps = {
   className: "",
   kind: "is-primary",
 };
-
-export default Button;

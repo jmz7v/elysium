@@ -3,7 +3,7 @@ import React from "react";
 import { render, fireEvent, cleanup } from "react-testing-library";
 
 // Components
-import Button, { config } from "./index";
+import { Button, config } from "./index";
 
 // Other
 afterEach(cleanup);

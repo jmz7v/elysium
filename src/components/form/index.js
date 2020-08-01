@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 // Components
 import Input from "components/input";
-import Button from "components/Button";
+import { Button } from "components/Button";
 import Options from "components/options";
 import Select from "components/select";
 
