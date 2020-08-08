@@ -1,6 +1,5 @@
 // Libraries
 import React from "react";
-import PropTypes from "prop-types";
 import classNames from "classnames";
 
 // Other
@@ -11,7 +10,14 @@ export const config = {
 };
 
 // Button component
-export const Button = ({ onClick, disabled, loading, className, kind, text }) => (
+export const Button = ({ onClick, disabled, loading, className, kind = "is-primary", text = "Button" }: {
+  onClick: () => void
+  disabled?: boolean
+  loading?: boolean
+  className?: string
+  kind?: string
+  text: string
+}) => (
   <button
     className={classNames(config.main, className, kind, {
       [config.loading]: loading,
@@ -24,20 +30,3 @@ export const Button = ({ onClick, disabled, loading, className, kind, text }) =>
     {text}
   </button>
 );
-
-Button.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  disabled: PropTypes.bool,
-  loading: PropTypes.bool,
-  text: PropTypes.string,
-  className: PropTypes.string,
-  kind: PropTypes.string,
-};
-
-Button.defaultProps = {
-  disabled: false,
-  loading: false,
-  text: "button",
-  className: "",
-  kind: "is-primary",
-};
