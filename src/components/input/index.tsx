@@ -11,8 +11,8 @@ const numericKeys = ["isInteger", "isNumber"];
 const ENTER_KEY_CODE = 13;
 
 const useValidation = ({ value }) => {
-  return {validationResult: true}
-}
+  return { validationResult: true };
+};
 
 const Input = ({
   defaultValue,
@@ -24,26 +24,25 @@ const Input = ({
   },
   type = "text",
   valid,
-  invalid
-} : {
-  defaultValue: string
-label: string
-help: string
-placeholder: string
-valueChanged: (value: any) => void
-type: string
-disabled?: boolean
-valid?: boolean
-invalid?: boolean
+  invalid,
+}: {
+  defaultValue: string;
+  label: string;
+  help: string;
+  placeholder: string;
+  valueChanged: (value: any) => void;
+  type: string;
+  disabled?: boolean;
+  valid?: boolean;
+  invalid?: boolean;
 }) => {
-  const [value, setValue] = useState(defaultValue)
-  const { validationResult } = useValidation({value})
-  const [invalidMessage, setInvalidMessage] = useState("")
+  const [value, setValue] = useState(defaultValue);
+  const { validationResult } = useValidation({ value });
+  const [invalidMessage, setInvalidMessage] = useState("");
 
-    const validate = () => {
-      // return validator(this);
-    };
-
+  const validate = () => {
+    // return validator(this);
+  };
 
   // export = () => {
   //   const formattedValue = Object.keys(this.props).some((numericKey) =>
@@ -67,12 +66,12 @@ invalid?: boolean
   const renderLabel = () => {
     if (label.length === 0) return null;
     return <label className="label">{label}</label>;
-  }
+  };
 
   const renderError = () => {
     if (invalidMessage.length === 0) return null;
     return <p className="help is-danger">{invalidMessage}</p>;
-  }
+  };
 
   const renderInput = () => {
     const className = classNames("input", {
@@ -80,21 +79,23 @@ invalid?: boolean
       "is-danger": invalid,
     });
 
-    return (<input
+    return (
+      <input
         className={className}
-          type={type}
-          disabled
-          placeholder={placeholder}
-          value={value}
-          // onChange: this.setValue,
-          // onKeyDown: (key) => {
-          //   if (key.keyCode === ENTER_KEY_CODE) {
-          //     this.props.handlePrimary();
-          //   }
-          // },
-          // onBlur: this.validate
-           />);
-  }
+        type={type}
+        disabled
+        placeholder={placeholder}
+        value={value}
+        // onChange: this.setValue,
+        // onKeyDown: (key) => {
+        //   if (key.keyCode === ENTER_KEY_CODE) {
+        //     this.props.handlePrimary();
+        //   }
+        // },
+        // onBlur: this.validate
+      />
+    );
+  };
 
   return (
     <div className="field">
@@ -103,6 +104,6 @@ invalid?: boolean
       {renderError()}
     </div>
   );
-}
+};
 
 export default Input;

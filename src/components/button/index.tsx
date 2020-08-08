@@ -10,13 +10,20 @@ export const config = {
 };
 
 // Button component
-export const Button = ({ onClick, disabled, loading, className, kind = "is-primary", text = "Button" }: {
-  onClick: () => void
-  disabled?: boolean
-  loading?: boolean
-  className?: string
-  kind?: string
-  text: string
+export const Button = ({
+  onClick,
+  disabled,
+  loading,
+  className,
+  kind = "is-primary",
+  text = "Button",
+}: {
+  onClick: () => void;
+  disabled?: boolean;
+  loading?: boolean;
+  className?: string;
+  kind?: string;
+  text: string;
 }) => (
   <button
     className={classNames(config.main, className, kind, {
