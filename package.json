@@ -24,7 +24,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "prettier --write '**/*.js' '**/*.css' '**/*.scss' '**/*.md'",
+    "lint": "prettier --write '**/*.tsx' '**/*.js' '**/*.css' '**/*.scss' '**/*.md'",
     "test": "react-scripts test --env=jsdom",
     "coverage": "yarn test --coverage",
     "eject": "react-scripts eject"
