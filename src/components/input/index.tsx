@@ -80,20 +80,20 @@ invalid?: boolean
       "is-danger": invalid,
     });
 
-    return <input
-    className={className}
-      type={type}
-      disabled
-      placeholder={placeholder}
-      value={value}
-      // onChange: this.setValue,
-      // onKeyDown: (key) => {
-      //   if (key.keyCode === ENTER_KEY_CODE) {
-      //     this.props.handlePrimary();
-      //   }
-      // },
-      // onBlur: this.validate
-       />;
+    return (<input
+        className={className}
+          type={type}
+          disabled
+          placeholder={placeholder}
+          value={value}
+          // onChange: this.setValue,
+          // onKeyDown: (key) => {
+          //   if (key.keyCode === ENTER_KEY_CODE) {
+          //     this.props.handlePrimary();
+          //   }
+          // },
+          // onBlur: this.validate
+           />);
   }
 
   return (
