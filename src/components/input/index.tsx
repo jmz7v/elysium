@@ -10,39 +10,36 @@ import validator from "components/validator";
 const numericKeys = ["isInteger", "isNumber"];
 const ENTER_KEY_CODE = 13;
 
-
-
 // validations to look for
 const allowedValidations = {
-  required: (value) => {
-  },
-  isEmail: (value) => {
+  required: (value) => {},
+  isEmail: (value) => {},
+};
 
-  }
-}
-
-const useValidation = ({ name, value, validations } : {
-  name: string
-  value: any
-  validations: any
+const useValidation = ({
+  name,
+  value,
+  validations,
+}: {
+  name: string;
+  value: any;
+  validations: any;
 }) => {
-  const __DEBUG__ = true
-
+  const __DEBUG__ = true;
 
   const validate = () => {
     if (__DEBUG__) {
-      console.log(`Running validations, ${validations}`)
+      console.log(`Running validations, ${validations}`);
       // determine which validations from allowedValidations will be considered
-      console.log({validations, allowedValidations})
+      console.log({ validations, allowedValidations });
       Object.entries(allowedValidations).map(([ruleName, rule]) => {
         // this validation will be run
         if (validations[ruleName]) {
-          console.log(`validating for ${ruleName}`)
+          console.log(`validating for ${ruleName}`);
         }
-      })
+      });
     }
-
-  }
+  };
   return { validate };
 };
 
@@ -74,11 +71,15 @@ const Input = ({
   valid?: boolean;
   invalid?: boolean;
   // validations
-  required?: boolean
-  isEmail?: boolean
+  required?: boolean;
+  isEmail?: boolean;
 }) => {
   const [value, setValue] = useState(defaultValue);
-  const { validate } = useValidation({ name, value, validations: { required, isEmail }});
+  const { validate } = useValidation({
+    name,
+    value,
+    validations: { required, isEmail },
+  });
   const [invalidMessage, setInvalidMessage] = useState("");
 
   // export = () => {
@@ -91,13 +92,13 @@ const Input = ({
   // // };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.currentTarget.value)
+    setValue(e.currentTarget.value);
   };
 
   useEffect(() => {
-    console.log({name, value})
-    valueChanged(name, value)
-  }, [value])
+    console.log({ name, value });
+    valueChanged(name, value);
+  }, [value]);
 
   const renderLabel = () => {
     if (label.length === 0) return null;
