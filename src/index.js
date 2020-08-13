@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Landing from "views/landing";
 import Login from "views/login";
 import Dashboard from "views/dashboard";
+import { Analytics } from "views/analytics";
 
 // Other
 import "./styles/index.scss";
@@ -31,6 +32,7 @@ const Elysium = () => (
         <Route path="/login" component={Login} />
         <Route exact path="/" component={Landing} />
         <Route path="/:route" component={Private} />
+        <Route path="/analytics" component={Analytics} />
       </Switch>
     </React.Fragment>
   </Router>
