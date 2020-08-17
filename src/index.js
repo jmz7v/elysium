@@ -29,10 +29,10 @@ const Elysium = () => (
   <Router>
     <React.Fragment>
       <Switch>
+        <Route path="/analytics" component={Analytics} />
         <Route path="/login" component={Login} />
         <Route exact path="/" component={Landing} />
         <Route path="/:route" component={Private} />
-        <Route path="/analytics" component={Analytics} />
       </Switch>
     </React.Fragment>
   </Router>
