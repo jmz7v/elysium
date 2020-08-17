@@ -75,16 +75,11 @@ const demo_data = [
 
 /* Component */
 export const WeekChart = ({ data }) => {
-  /* The useRef Hook creates a variable that "holds on" to a value across rendering
-       passes. In this case it will hold our component's SVG DOM element. It's
-       initialized null and React will assign it later (see the return statement) */
-  const d3Container = useRef(null);
+  const node = useRef(null);
 
-  /* The useEffect Hook is for running side effects outside of React,
-       for instance inserting elements into the DOM using D3 */
-  useEffect(() => {
-    if (data && d3Container.current) {
-      const svg = d3.select(d3Container.current);
+
+  const renderChart = () => {
+      const svg = d3.select(node.current);
 
       // Bind D3 data
       const update = svg.append("g").selectAll("text").data(data);
@@ -103,11 +98,16 @@ export const WeekChart = ({ data }) => {
 
       // Remove old D3 elements
       update.exit().remove();
+  }
+
+  useEffect(() => {
+    if (data && node.current) {
+      renderChart()
     }
-  }, [data, d3Container.current]);
+  }, [data, node.current]);
 
   return (
-    <svg className="d3-component" width={400} height={200} ref={d3Container} />
+    <svg className="d3-component" width={400} height={200} ref={node} />
   );
 };
 
