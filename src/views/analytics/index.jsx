@@ -93,34 +93,19 @@ export const WeekChart = ({ data }) => {
     // Bind D3 data
     // const update = chart.append("g").selectAll("text").data(data);
 
-    // Enter new D3 elements
-    // update
-    //   .enter()
-    //   .append("text")
-    //   .attr("x", (d, i) => i * 25)
-    //   .attr("y", 40)
-    //   .style("font-size", 24)
-    // .text((d) => d);
-
     // generate bottom axis
-    const xScale = d3.scaleLinear().domain([0, data.length]).range([0, width]);
-
-    console.log(data.length);
-
+    const xScale = d3
+      .scaleLinear()
+      .domain([0, data.length - 1])
+      .range([0, width]);
     const xAxis = d3.axisBottom(xScale).ticks(data.length);
-    // .tickSize(10)
-    // .tickValues(data => console.log({data}) || data.map((_, i) => i))
-    // .tickValues(data.map(({label}) => label));
-    // .tickFormat(d => console.log({d}))
-    // .tickValues((d, i) => console.log({d, i}) || [1])
-
-    chart.append("g").call(xAxis);
+    chart
+      .append("g")
+      .call(xAxis)
+      .attr("transform", `translate(${margin.left}, ${height + margin.top})`);
 
     // domain from 0 to 1 because these charts are percent based
     const yScale = d3.scaleLinear().domain([0, 1]).range([0, height]);
-
-    // Update existing D3 elements
-    // update.attr("x", (d, i) => i * 40).text((d) => d);
 
     // Remove old D3 elements
     // update.exit().remove();
@@ -129,14 +114,8 @@ export const WeekChart = ({ data }) => {
     const line = () =>
       d3
         .line()
-        .x((d, i) => {
-          console.log(i);
-          return xScale(i);
-        })
-        .y((d) => {
-          console.log(d.values[0].value);
-          return yScale(d.values[0].value);
-        });
+        .x((d, i) => xScale(i))
+        .y((d) => yScale(d.values[0].value));
 
     chart
       .append("path")
@@ -145,7 +124,7 @@ export const WeekChart = ({ data }) => {
       .attr("stroke", "steelblue")
       .attr("stroke-width", 1.5)
       .attr("d", line())
-      .attr("transform", `translate("${margin.left}, ${margin.top}")`);
+      .attr("transform", `translate(${margin.left}, ${margin.top})`);
   };
 
   useEffect(() => {
