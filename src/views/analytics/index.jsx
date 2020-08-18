@@ -73,8 +73,6 @@ const DEMO_DATA = [
   },
 ];
 
-
-
 /* Component */
 export const WeekChart = ({ data }) => {
   const node = useRef(null);
@@ -84,91 +82,79 @@ export const WeekChart = ({ data }) => {
     const width = node.current.clientWidth - margin.left - margin.right;
     const height = node.current.clientHeight - margin.top - margin.bottom;
 
-    const chart = d3.select(node.current)
+    const chart = d3.select(node.current);
 
-  // const chart = d3.select(".chart")
-  //     .attr("width", 840)
-  //     .attr("height", 500)
-  //   .append("g")
-  //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    // const chart = d3.select(".chart")
+    //     .attr("width", 840)
+    //     .attr("height", 500)
+    //   .append("g")
+    //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    // Bind D3 data
+    // const update = chart.append("g").selectAll("text").data(data);
 
+    // Enter new D3 elements
+    // update
+    //   .enter()
+    //   .append("text")
+    //   .attr("x", (d, i) => i * 25)
+    //   .attr("y", 40)
+    //   .style("font-size", 24)
+    // .text((d) => d);
 
-      // Bind D3 data
-      // const update = chart.append("g").selectAll("text").data(data);
+    // generate bottom axis
+    const xScale = d3.scaleLinear().domain([0, data.length]).range([0, width]);
 
-      // Enter new D3 elements
-      // update
-      //   .enter()
-      //   .append("text")
-      //   .attr("x", (d, i) => i * 25)
-      //   .attr("y", 40)
-      //   .style("font-size", 24)
-        // .text((d) => d);
+    console.log(data.length);
 
-
-
-
-
-// generate bottom axis
-const xScale = d3.scaleLinear()
-    .domain([0, data.length])
-    .range([0, width])
-
-    console.log(data.length)
-
-    const xAxis = d3.axisBottom(xScale)
-      .ticks(data.length)
-      // .tickSize(10)
-          // .tickValues(data => console.log({data}) || data.map((_, i) => i))
-          // .tickValues(data.map(({label}) => label));
-          // .tickFormat(d => console.log({d}))
-      // .tickValues((d, i) => console.log({d, i}) || [1])
+    const xAxis = d3.axisBottom(xScale).ticks(data.length);
+    // .tickSize(10)
+    // .tickValues(data => console.log({data}) || data.map((_, i) => i))
+    // .tickValues(data.map(({label}) => label));
+    // .tickFormat(d => console.log({d}))
+    // .tickValues((d, i) => console.log({d, i}) || [1])
 
     chart.append("g").call(xAxis);
 
-// domain from 0 to 1 because these charts are percent based
-const yScale = d3.scaleLinear().domain([0, 1]).range([0, height])
+    // domain from 0 to 1 because these charts are percent based
+    const yScale = d3.scaleLinear().domain([0, 1]).range([0, height]);
 
+    // Update existing D3 elements
+    // update.attr("x", (d, i) => i * 40).text((d) => d);
 
+    // Remove old D3 elements
+    // update.exit().remove();
 
+    // one line
+    const line = () =>
+      d3
+        .line()
+        .x((d, i) => {
+          console.log(i);
+          return xScale(i);
+        })
+        .y((d) => {
+          console.log(d.values[0].value);
+          return yScale(d.values[0].value);
+        });
 
-
-
-      // Update existing D3 elements
-      // update.attr("x", (d, i) => i * 40).text((d) => d);
-
-      // Remove old D3 elements
-      // update.exit().remove();
-
-
-
-
-
-
-// one line
-  const line = () => d3.line()
-        .x((d, i) => { console.log(i); return xScale(i) })
-        .y((d) => { console.log(d.values[0].value); return yScale(d.values[0].value) })
-
-    chart.append("path")
+    chart
+      .append("path")
       .datum(data)
       .attr("fill", "none")
       .attr("stroke", "steelblue")
       .attr("stroke-width", 1.5)
       .attr("d", line())
       .attr("transform", `translate("${margin.left}, ${margin.top}")`);
-  }
+  };
 
   useEffect(() => {
     if (data && node.current) {
-      renderChart()
+      renderChart();
     }
   }, [data, node.current]);
 
-  return (
-    <svg className="d3-component" width={700} height={200} ref={node} />
-  );
+  return <svg className="d3-component" width={700} height={200} ref={node} />;
 };
 
 export const Analytics = () => {
