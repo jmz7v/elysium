@@ -59,7 +59,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,md,css,html}": [
+    "*.{tsx,jsx,ts,js,md,css,html}": [
       "yarn lint"
     ],
     "yarn.lock": [
