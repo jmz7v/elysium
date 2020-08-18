@@ -98,7 +98,11 @@ export const WeekChart = ({ data }) => {
       .scaleLinear()
       .domain([0, data.length - 1])
       .range([0, width]);
-    const xAxis = d3.axisBottom(xScale).ticks(data.length);
+
+    const xAxis = d3
+      .axisBottom(xScale)
+      .ticks(data.length)
+      .tickFormat((d) => data[d].label);
     chart
       .append("g")
       .call(xAxis)
