@@ -70,6 +70,47 @@ const DEMO_DATA = [
         ],
       },
     ],
+    data2: [
+      {
+        key: "2019",
+        label: "2019",
+        values: [
+          { key: "Monday", value: 0.613 },
+          { key: "Tuesday", value: 0.24 },
+          { key: "Wednesday", value: 0.888 },
+          { key: "Thursday", value: 0.264 },
+          { key: "Friday", value: 0.624 },
+          { key: "Saturday", value: 0.288 },
+          { key: "Sunday", value: 0.842 },
+        ],
+      },
+      {
+        key: "2020",
+        label: "2020",
+        values: [
+          { key: "Monday", value: 0.423 },
+          { key: "Tuesday", value: 0.225 },
+          { key: "Wednesday", value: 0.431 },
+          { key: "Thursday", value: 0.429 },
+          { key: "Friday", value: 0.464 },
+          { key: "Saturday", value: 0.599 },
+          { key: "Sunday", value: 0.319 },
+        ],
+      },
+      {
+        key: "all-time",
+        label: "All Time",
+        values: [
+          { key: "Monday", value: 0.17 },
+          { key: "Tuesday", value: 0.232 },
+          { key: "Wednesday", value: 0.899 },
+          { key: "Thursday", value: 0.508 },
+          { key: "Friday", value: 0.734 },
+          { key: "Saturday", value: 0.119 },
+          { key: "Sunday", value: 0.483 },
+        ],
+      },
+    ],
   },
 ];
 
@@ -119,7 +160,7 @@ export const WeekChart = ({ data }) => {
       d3
         .line()
         .x((d, i) => xScale(i))
-        .y((d) => yScale(d.values[0].value));
+        .y((d) => yScale(d.values[1].value));
 
     chart
       .append("path")
@@ -129,6 +170,19 @@ export const WeekChart = ({ data }) => {
       .attr("stroke-width", 1.5)
       .attr("d", line())
       .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+    var paths = d3.select("svg").selectAll("path").data(data);
+    paths
+      .enter()
+      .append("path")
+      // .attr("class", function(d) {
+      //   if(d.id == "A") { return 'class-A'; }
+      //   else if(d.id == "B") { return 'class-B'; }
+      // })
+      .attr("d", function (d) {
+        console.log({ d });
+        return line(d.geometry);
+      });
   };
 
   useEffect(() => {
