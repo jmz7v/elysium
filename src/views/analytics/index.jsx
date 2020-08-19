@@ -1,5 +1,5 @@
 // Libraries
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 
 // Other
@@ -39,9 +39,18 @@ const DEMO_DATA = [
 
 const COLORS = ["#003049", "#d62828", "#f77f00", "#fcbf49", "#eae2b7"];
 
+const getLineKeys = (d = []) => d.map((i) => i.key);
+const generateLineDefaultState = (data) =>
+  data.reduce((acc, i) => ({ ...acc, [i.key]: true }), {});
+
 /* Component */
 export const WeekChart = ({ data, xLabels }) => {
   const node = useRef(null);
+  const [activeLines, setActiveLines] = useState(
+    generateLineDefaultState(data)
+  );
+
+  console.log({ activeLines, data }, getLineKeys(data));
 
   const renderChart = () => {
     const margin = { top: 40, right: 20, bottom: 20, left: 40 };
@@ -118,24 +127,49 @@ export const WeekChart = ({ data, xLabels }) => {
       .x((d, i) => xScale(i))
       .y((d) => yScale(d));
 
-    var paths = chart
+    // render multiple lines
+    const paths = chart
       .selectAll(".line")
       .data(data)
       .enter()
       .append("path")
-      .attr("d", function (d) {
-        // console.log({ d });
-        return line(d.values);
-      })
+      .attr("d", (d) => line(d.values))
       .attr("fill", "none")
       .attr("stroke", (_, i) => COLORS[i])
       .attr("stroke-width", 1.5)
       .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+    const toggles = chart
+      .selectAll(".toggle")
+      .data(data)
+      .enter()
+      .append("text")
+      .text((d) => d.label)
+      .attr(
+        "transform",
+        (d, i) => `translate(${i * 70 + margin.left}, ${margin.top})`
+      )
+      .on("click", ({ key }) =>
+        setActiveLines({ ...activeLines, [key]: !activeLines[key] })
+      );
+    // .on("click", () => {
+    //     // Determine if current line is visible
+    //     var active   = d.active ? false : true,
+    //     newOpacity = active ? 0 : 1;
+    //     // Hide or show the elements based on the ID
+    //     d3.select("#tag"+d.key.replace(/\s+/g, ''))
+    //         .transition().duration(100)
+    //         .style("opacity", newOpacity);
+    //     // Update whether or not the elements are active
+    //     d.active = active;
+    //     })
+    // .text(d.key);
   };
 
   useEffect(() => {
     if (data && node.current) {
       renderChart();
+      // setActiveLines(getLineKeys(data))
     }
   }, [data, node.current]);
 
