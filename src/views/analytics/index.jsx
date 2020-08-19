@@ -59,15 +59,10 @@ export const WeekChart = ({ data, xLabels }) => {
 
     const chart = d3.select(node.current);
 
-    // const chart = d3.select(".chart")
-    //     .attr("width", 840)
-    //     .attr("height", 500)
-    //   .append("g")
-    //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    // clean up
+    chart.selectAll("*").remove();
 
     // Bind D3 data
-    // const update = chart.append("g").selectAll("text").data(data);
-
     const xElementCount = xLabels.length;
     const yElementCount = 5;
 
@@ -137,7 +132,14 @@ export const WeekChart = ({ data, xLabels }) => {
       .attr("fill", "none")
       .attr("stroke", (_, i) => COLORS[i])
       .attr("stroke-width", 1.5)
-      .attr("transform", `translate(${margin.left}, ${margin.top})`);
+      .attr("transform", `translate(${margin.left}, ${margin.top})`)
+      .attr(
+        "class",
+        ({ key }) =>
+          `week_chart--line week_chart--line-${
+            activeLines[key] ? "enabled" : "disabled"
+          }`
+      );
 
     const toggles = chart
       .selectAll(".toggle")
@@ -152,17 +154,6 @@ export const WeekChart = ({ data, xLabels }) => {
       .on("click", ({ key }) =>
         setActiveLines({ ...activeLines, [key]: !activeLines[key] })
       );
-    // .on("click", () => {
-    //     // Determine if current line is visible
-    //     var active   = d.active ? false : true,
-    //     newOpacity = active ? 0 : 1;
-    //     // Hide or show the elements based on the ID
-    //     d3.select("#tag"+d.key.replace(/\s+/g, ''))
-    //         .transition().duration(100)
-    //         .style("opacity", newOpacity);
-    //     // Update whether or not the elements are active
-    //     d.active = active;
-    //     })
     // .text(d.key);
   };
 
@@ -171,7 +162,7 @@ export const WeekChart = ({ data, xLabels }) => {
       renderChart();
       // setActiveLines(getLineKeys(data))
     }
-  }, [data, node.current]);
+  }, [data, node.current, activeLines]);
 
   return <svg className="d3-component" width={700} height={200} ref={node} />;
 };

@@ -5,3 +5,10 @@
 .week_chart--grid {
   opacity: 0.1;
 }
+
+.week_chart--line-enabled {
+  opacity: 1;
+}
+.week_chart--line-disabled {
+  opacity: 0.1;
+}
