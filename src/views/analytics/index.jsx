@@ -1,5 +1,5 @@
 // Libraries
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import * as d3 from "d3";
 
 // Other
@@ -45,22 +45,24 @@ const generateLineDefaultState = (data) =>
 
 /* Component */
 export const WeekChart = ({ data, xLabels }) => {
-  const node = useRef(null);
-  const [activeLines, setActiveLines] = useState(
+  const [activeLines, setActiveLines] = useState(() =>
     generateLineDefaultState(data)
   );
+  const node = useRef(null);
 
-  console.log({ activeLines, data }, getLineKeys(data));
+  const margin = { top: 40, right: 20, bottom: 20, left: 40 };
+
+  const toggleLine = ({ key: line }) => {
+    setActiveLines((active) => ({ ...active, [line]: !active[line] }));
+  };
 
   const renderChart = () => {
-    const margin = { top: 40, right: 20, bottom: 20, left: 40 };
     const width = node.current.clientWidth - margin.left - margin.right;
     const height = node.current.clientHeight - margin.top - margin.bottom;
-
     const chart = d3.select(node.current);
 
     // clean up
-    chart.selectAll("*").remove();
+    // chart.selectAll("*").remove();
 
     // Bind D3 data
     const xElementCount = xLabels.length;
@@ -139,7 +141,8 @@ export const WeekChart = ({ data, xLabels }) => {
           `week_chart--line week_chart--line-${
             activeLines[key] ? "enabled" : "disabled"
           }`
-      );
+      )
+      .attr("id", ({ key }) => `#week_chart--line-${key}`);
 
     const toggles = chart
       .selectAll(".toggle")
@@ -151,18 +154,29 @@ export const WeekChart = ({ data, xLabels }) => {
         "transform",
         (d, i) => `translate(${i * 70 + margin.left}, ${margin.top})`
       )
-      .on("click", ({ key }) =>
-        setActiveLines({ ...activeLines, [key]: !activeLines[key] })
-      );
-    // .text(d.key);
+      .on("click", toggleLine);
   };
 
   useEffect(() => {
     if (data && node.current) {
       renderChart();
-      // setActiveLines(getLineKeys(data))
     }
-  }, [data, node.current, activeLines]);
+  }, []);
+
+  useEffect(() => {
+    if (data && node.current) {
+      d3.select(node.current)
+        .selectAll(".week_chart--line")
+        .data(data)
+        .attr(
+          "class",
+          ({ key }) =>
+            `week_chart--line week_chart--line-${
+              activeLines[key] ? "enabled" : "disabled"
+            }`
+        );
+    }
+  }, [activeLines]);
 
   return <svg className="d3-component" width={700} height={200} ref={node} />;
 };

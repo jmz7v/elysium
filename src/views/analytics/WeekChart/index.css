@@ -6,6 +6,10 @@
   opacity: 0.1;
 }
 
+.week_chart--line {
+  transition: opacity 120ms ease-in-out;
+}
+
 .week_chart--line-enabled {
   opacity: 1;
 }
