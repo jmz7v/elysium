@@ -16,3 +16,15 @@
 .week_chart--line-disabled {
   opacity: 0.1;
 }
+
+.week_chart--toggle {
+  display: block;
+  position: relative;
+}
+.week_chart--toggle rect,
+.week_chart--toggle text {
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  left: 0;
+}

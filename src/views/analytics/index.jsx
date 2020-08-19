@@ -148,13 +148,21 @@ export const WeekChart = ({ data, xLabels }) => {
       .selectAll(".toggle")
       .data(data)
       .enter()
-      .append("text")
-      .text((d) => d.label)
+      .append("g")
+      .on("click", toggleLine)
+      .attr("class", "week_chart--toggle")
       .attr(
         "transform",
-        (d, i) => `translate(${i * 70 + margin.left}, ${margin.top})`
-      )
-      .on("click", toggleLine);
+        (d, i) => `translate(${i * 100 + margin.left}, ${margin.top})`
+      );
+
+    toggles
+      .append("rect")
+      .attr("width", 20)
+      .attr("height", 20)
+      .attr("fill", (_, i) => COLORS[i]);
+
+    toggles.append("text").text((d) => d.label);
   };
 
   useEffect(() => {
