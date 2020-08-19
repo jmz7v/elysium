@@ -2,6 +2,9 @@
 import React, { useEffect, useRef } from "react";
 import * as d3 from "d3";
 
+// Other
+import "./WeekChart/index.css";
+
 const DEMO_DATA = [
   {
     title: "Commits by day of the week",
@@ -119,12 +122,16 @@ export const WeekChart = ({ data2, xLabels }) => {
     // Bind D3 data
     // const update = chart.append("g").selectAll("text").data(data);
 
+    const xElementCount = xLabels.length;
+    const yElementCount = 5;
+
     const xScale = d3
       .scaleLinear()
-      .domain([0, xLabels.length - 1])
+      .domain([0, xElementCount - 1])
       .range([0, width]);
 
     // domain from 0 to 1 because these charts are percent based
+    // inverted range is intentional (chart is upside down otherwise)
     const yScale = d3.scaleLinear().domain([0, 1]).range([height, 0]);
 
     // generate bottom axis
@@ -138,12 +145,35 @@ export const WeekChart = ({ data2, xLabels }) => {
       .call(xAxis)
       .attr("transform", `translate(${margin.left}, ${height + margin.top})`);
 
-    const yAxis = d3.axisLeft(yScale).ticks(5);
+    const yAxis = d3.axisLeft(yScale).ticks(yElementCount);
 
     chart
       .append("g")
       .call(yAxis)
       .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+    const yGrid = d3
+      .axisRight(yScale)
+      .ticks(yElementCount)
+      .tickSize(width)
+      .tickFormat(() => "");
+    const xGrid = d3
+      .axisTop(xScale)
+      .ticks(xElementCount)
+      .tickSize(height)
+      .tickFormat(() => "");
+
+    chart
+      .append("g")
+      .call(yGrid)
+      .attr("transform", `translate(${margin.left}, ${margin.top})`)
+      .attr("class", "week_chart--grid week_chart--grid-y");
+
+    chart
+      .append("g")
+      .call(xGrid)
+      .attr("transform", `translate(${margin.left}, ${height + margin.top})`)
+      .attr("class", "week_chart--grid week_chart--grid-x");
 
     // one line
     const line = d3
@@ -177,7 +207,7 @@ export const WeekChart = ({ data2, xLabels }) => {
 
 export const Analytics = () => {
   return (
-    <div>
+    <div className="week_chart">
       Analytics
       <WeekChart
         data={DEMO_DATA[0].data}
