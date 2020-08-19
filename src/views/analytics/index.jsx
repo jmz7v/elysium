@@ -10,79 +10,14 @@ const DEMO_DATA = [
     title: "Commits by day of the week",
     data: [
       {
-        key: "01-monday",
-        label: "Monday",
-        values: [
-          { key: "2019", value: 0.613 },
-          { key: "2020", value: 0.423 },
-          { key: "all-time", value: 0.17 },
-        ],
-      },
-      {
-        key: "02-tuesday",
-        label: "Tuesday",
-        values: [
-          { key: "2019", value: 0.24 },
-          { key: "2020", value: 0.225 },
-          { key: "all-time", value: 0.232 },
-        ],
-      },
-      {
-        key: "03-wednesday",
-        label: "Wednesday",
-        values: [
-          { key: "2019", value: 0.888 },
-          { key: "2020", value: 0.431 },
-          { key: "all-time", value: 0.899 },
-        ],
-      },
-      {
-        key: "04-thursday",
-        label: "Thursday",
-        values: [
-          { key: "2019", value: 0.264 },
-          { key: "2020", value: 0.429 },
-          { key: "all-time", value: 0.508 },
-        ],
-      },
-      {
-        key: "05-friday",
-        label: "Friday",
-        values: [
-          { key: "2019", value: 0.624 },
-          { key: "2020", value: 0.464 },
-          { key: "all-time", value: 0.734 },
-        ],
-      },
-      {
-        key: "06-saturday",
-        label: "Saturday",
-        values: [
-          { key: "2019", value: 0.288 },
-          { key: "2020", value: 0.599 },
-          { key: "all-time", value: 0.119 },
-        ],
-      },
-      {
-        key: "07-sunday",
-        label: "Sunday",
-        values: [
-          { key: "2019", value: 0.842 },
-          { key: "2020", value: 0.319 },
-          { key: "all-time", value: 0.483 },
-        ],
-      },
-    ],
-    data2: [
-      {
         key: "2019",
         label: "2019",
-        values: [0.613, 0.242, 0.888, 0.264, 0.624, 0.288, 0.842],
+        values: [0.613, 0.142, 0.888, 0.264, 0.624, 0.288, 0.842],
       },
       {
         key: "2020",
         label: "2020",
-        values: [0.423, 0.225, 0.431, 0.429, 0.464, 0.599, 0.319],
+        values: [0.423, 0.25, 0.431, 0.429, 0.464, 0.599, 0.319],
       },
       {
         key: "all-time",
@@ -102,8 +37,10 @@ const DEMO_DATA = [
   },
 ];
 
+const COLORS = ["#003049", "#d62828", "#f77f00", "#fcbf49", "#eae2b7"];
+
 /* Component */
-export const WeekChart = ({ data2, xLabels }) => {
+export const WeekChart = ({ data, xLabels }) => {
   const node = useRef(null);
 
   const renderChart = () => {
@@ -183,24 +120,24 @@ export const WeekChart = ({ data2, xLabels }) => {
 
     var paths = chart
       .selectAll(".line")
-      .data(data2)
+      .data(data)
       .enter()
       .append("path")
       .attr("d", function (d) {
-        console.log({ d });
+        // console.log({ d });
         return line(d.values);
       })
       .attr("fill", "none")
-      .attr("stroke", "steelblue")
+      .attr("stroke", (_, i) => COLORS[i])
       .attr("stroke-width", 1.5)
       .attr("transform", `translate(${margin.left}, ${margin.top})`);
   };
 
   useEffect(() => {
-    if (data2 && node.current) {
+    if (data && node.current) {
       renderChart();
     }
-  }, [data2, node.current]);
+  }, [data, node.current]);
 
   return <svg className="d3-component" width={700} height={200} ref={node} />;
 };
@@ -209,11 +146,7 @@ export const Analytics = () => {
   return (
     <div className="week_chart">
       Analytics
-      <WeekChart
-        data={DEMO_DATA[0].data}
-        data2={DEMO_DATA[0].data2}
-        xLabels={DEMO_DATA[0].xLabels}
-      />
+      <WeekChart data={DEMO_DATA[0].data} xLabels={DEMO_DATA[0].xLabels} />
     </div>
   );
 };
