@@ -104,7 +104,7 @@ export const WeekChart = ({ data2, xLabels }) => {
   const node = useRef(null);
 
   const renderChart = () => {
-    const margin = { top: 40, right: 50, bottom: 20, left: 20 };
+    const margin = { top: 40, right: 20, bottom: 20, left: 40 };
     const width = node.current.clientWidth - margin.left - margin.right;
     const height = node.current.clientHeight - margin.top - margin.bottom;
 
@@ -119,26 +119,31 @@ export const WeekChart = ({ data2, xLabels }) => {
     // Bind D3 data
     // const update = chart.append("g").selectAll("text").data(data);
 
-    // generate bottom axis
     const xScale = d3
       .scaleLinear()
       .domain([0, xLabels.length - 1])
       .range([0, width]);
 
+    // domain from 0 to 1 because these charts are percent based
+    const yScale = d3.scaleLinear().domain([0, 1]).range([height, 0]);
+
+    // generate bottom axis
     const xAxis = d3
       .axisBottom(xScale)
       .ticks(xLabels.length)
       .tickFormat((d) => xLabels[d]);
+
     chart
       .append("g")
       .call(xAxis)
       .attr("transform", `translate(${margin.left}, ${height + margin.top})`);
 
-    // domain from 0 to 1 because these charts are percent based
-    const yScale = d3.scaleLinear().domain([0, 1]).range([0, height]);
+    const yAxis = d3.axisLeft(yScale).ticks(5);
 
-    // Remove old D3 elements
-    // update.exit().remove();
+    chart
+      .append("g")
+      .call(yAxis)
+      .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
     // one line
     const line = d3
@@ -146,32 +151,19 @@ export const WeekChart = ({ data2, xLabels }) => {
       .x((d, i) => xScale(i))
       .y((d) => yScale(d));
 
-    // chart
-    //   .append("path")
-    //   .datum(data2)
-    //   .attr("fill", "none")
-    //   .attr("stroke", "steelblue")
-    //   .attr("stroke-width", 1.5)
-    //   .attr("d", line())
-    //   .attr("transform", `translate(${margin.left}, ${margin.top})`);
-
-    // console.log({paths})
     var paths = chart
       .selectAll(".line")
       .data(data2)
       .enter()
       .append("path")
-      // .attr("class", function(d) {
-      //   if(d.id == "A") { return 'class-A'; }
-      //   else if(d.id == "B") { return 'class-B'; }
-      // })
       .attr("d", function (d) {
         console.log({ d });
         return line(d.values);
       })
       .attr("fill", "none")
       .attr("stroke", "steelblue")
-      .attr("stroke-width", 1.5);
+      .attr("stroke-width", 1.5)
+      .attr("transform", `translate(${margin.left}, ${margin.top})`);
   };
 
   useEffect(() => {
